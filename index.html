@@ -1,12 +1,502 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vendas eBook</title>
-  </head>
-  <body>
-    <h1>Hello world</h1>
-    <p>Repositório de exemplo: vendas-ebook</p>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vida de cão: O que você coloca na sua tigela?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* PALETA DE CORES */
+            --color-black: #111111;
+            --color-white: #ffffff;
+            --color-gray-light: #f8f8f8;
+            --color-gray-medium: #e6e6e6;
+            --color-gray-text: #666666;
+            --color-accent: #1a5c36; /* Verde escuro - saúde/consciência */
+            
+            /* TIPOGRAFIA */
+            --font-primary: 'Inter', sans-serif;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-bold: 700;
+            --font-weight-extrabold: 800;
+            
+            /* ESPAÇAMENTOS */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            
+            /* LARGURAS */
+            --container-max: 1100px;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-regular);
+            line-height: 1.6;
+            color: var(--color-black);
+            background-color: var(--color-white);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* LAYOUT CONTAINER */
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* TIPOGRAFIA HIERARQUIA BRUTAL */
+        h1, h2, h3 {
+            font-weight: var(--font-weight-extrabold);
+            line-height: 1.2;
+            letter-spacing: -0.02em; /* Tracking levemente negativo */
+            margin-bottom: var(--space-sm);
+        }
+        
+        h1 {
+            font-size: 3rem; /* Grande, dominante */
+            margin-bottom: var(--space-sm);
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .subheadline {
+            font-size: 1.25rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-gray-text);
+            margin-bottom: var(--space-md);
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+            font-size: 1.125rem;
+            line-height: 1.7; /* Confortável, não compacto */
+        }
+        
+        .text-emphasis {
+            font-weight: var(--font-weight-bold);
+            color: var(--color-black);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-narrow {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* BOTÕES - CTA */
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-bold);
+            font-size: 1.125rem;
+            text-decoration: none;
+            padding: 1rem 3rem;
+            border-radius: 6px; /* Levemente arredondadas */
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #144a2b; /* Leve escurecimento no hover */
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-large {
+            font-size: 1.25rem;
+            padding: 1.25rem 4rem;
+        }
+        
+        /* BLOCO COMUM */
+        .block {
+            padding: var(--space-xl) 0;
+        }
+        
+        .block-divider {
+            border-bottom: 1px solid var(--color-gray-medium);
+        }
+        
+        /* BLOCO 1 - HERO */
+        .hero {
+            padding-top: var(--space-xl);
+            padding-bottom: var(--space-xl);
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* BLOCO 2 - Quebra de falsa segurança */
+        .false-security .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .false-security p {
+            margin-bottom: var(--space-lg);
+        }
+        
+        /* BLOCO 3 - Verdade incômoda */
+        .uncomfortable-truth {
+            background-color: var(--color-gray-light);
+        }
+        
+        .uncomfortable-truth .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* BLOCO 4 - História do Alf */
+        .alf-story {
+            background-color: var(--color-gray-light);
+        }
+        
+        .alf-story .content {
+            max-width: 600px; /* Texto mais estreito para leitura íntima */
+            margin: 0 auto;
+        }
+        
+        /* BLOCO 5 - Reposicionamento */
+        .repositioning .content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* BLOCO 6 - O que o manual entrega */
+        .manual-delivers ul {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .manual-delivers li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: var(--space-md);
+            font-size: 1.125rem;
+        }
+        
+        .manual-delivers li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--color-accent);
+            font-weight: var(--font-weight-bold);
+            font-size: 1.25rem;
+        }
+        
+        /* BLOCO 7 - Para quem é / não é */
+        .audience .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .audience-column {
+            padding: var(--space-md);
+        }
+        
+        .audience-column h3 {
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--color-gray-medium);
+            margin-bottom: var(--space-md);
+        }
+        
+        .audience-column ul {
+            list-style: none;
+        }
+        
+        .audience-column li {
+            position: relative;
+            padding-left: 1.75rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .audience-column li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 1.5rem;
+        }
+        
+        /* BLOCO 8 - Oferta */
+        .offer {
+            text-align: center;
+        }
+        
+        .offer-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-black);
+            margin: var(--space-md) 0;
+        }
+        
+        /* BLOCO 9 - CTA final */
+        .final-cta {
+            text-align: center;
+            padding-top: var(--space-lg);
+            padding-bottom: var(--space-xl);
+        }
+        
+        /* RODAPÉ */
+        footer {
+            padding: var(--space-xl) 0;
+            border-top: 1px solid var(--color-gray-medium);
+            text-align: center;
+            color: var(--color-gray-text);
+            font-size: 0.9rem;
+        }
+        
+        footer p {
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* RESPONSIVIDADE - MOBILE FIRST */
+        @media (max-width: 768px) {
+            html {
+                font-size: 14px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.875rem;
+            }
+            
+            .container {
+                padding: 0 var(--space-sm);
+            }
+            
+            .block {
+                padding: var(--space-lg) 0;
+            }
+            
+            .hero {
+                padding-top: var(--space-lg);
+                padding-bottom: var(--space-lg);
+            }
+            
+            /* BLOCO 7 - Para quem é / não é - 1 coluna no mobile */
+            .audience .columns {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .btn-large {
+                font-size: 1.125rem;
+                padding: 1rem 2.5rem;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .price {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- BLOCO 1 - HERO -->
+    <section class="hero block">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Vida de cão: O que você coloca na sua tigela?</h1>
+                <p class="subheadline">A verdade que a indústria de alimentos para pets não quer que você descubra sobre nutrição canina consciente.</p>
+                <a href="#oferta" class="btn">Quero saber o que realmente importa</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 2 - Quebra de falsa segurança -->
+    <section class="false-security block block-divider">
+        <div class="container">
+            <div class="content">
+                <h2>A falsa segurança da embalagem bonita</h2>
+                <p>Você escolhe a marca com o rótulo mais atraente, aquele que promete "ingredientes naturais" e "nutrição completa".</p>
+                <p>Mas o que realmente está por trás do marketing sofisticado?</p>
+                <p class="text-emphasis">Subprodutos, conservantes químicos, corantes artificiais e grãos de baixa qualidade disfarçados de alimentação premium.</p>
+                <p>A verdade é que a indústria conta com a sua confiança cega. Enquanto você acredita estar fazendo o melhor, o sistema digestivo do seu cão sofre as consequências.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 3 - Verdade incômoda -->
+    <section class="uncomfortable-truth block block-divider">
+        <div class="container">
+            <div class="content">
+                <h2>A verdade que ninguém quer encarar</h2>
+                <p class="text-center">Cães não foram feitos para consumir carboidratos processados em 80% de sua dieta.</p>
+                <p class="text-center">A indústria de ração convencional criou uma dependência de grãos porque são baratos, têm longa validade e enchem o estômago.</p>
+                <p class="text-center text-emphasis">Mas enxer não é nutrir.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 4 - História do Alf -->
+    <section class="alf-story block block-divider">
+        <div class="container">
+            <div class="content">
+                <h2>Como Alf me fez questionar tudo</h2>
+                <p>Meu border collie começou a ter problemas digestivos aos 7 anos. Coceiras, alergias, falta de energia. Levei a vários veterinários, cada um recomendando uma ração "especial" mais cara que a anterior.</p>
+                <p>Nada funcionava.</p>
+                <p>Até que comecei a pesquisar por conta própria. Descobri estudos sobre nutrição canina ancestral, sobre a verdadeira dieta dos lobos - nossos cães domésticos compartilham 99.9% do DNA com eles.</p>
+                <p>A transformação não foi instantânea, mas em 3 meses com uma alimentação realmente adequada, Alf era outro cão. Pelagem brilhante, energia renovada, problemas digestivos desaparecidos.</p>
+                <p>Foi quando percebi: precisava compartilhar isso.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 5 - Reposicionamento -->
+    <section class="repositioning block block-divider">
+        <div class="container">
+            <div class="content">
+                <h2>Não se trata apenas de comida</h2>
+                <p>Trata-se de <span class="text-emphasis">consciência</span>.</p>
+                <p>Trata-se de <span class="text-emphasis">responsabilidade</span>.</p>
+                <p>Trata-se de <span class="text-emphasis">longevidade</span> e <span class="text-emphasis">qualidade de vida</span>.</p>
+                <p>Você não está apenas alimentando um animal de estimação.</p>
+                <p class="text-emphasis">Está nutrindo um membro da família.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 6 - O que o manual entrega -->
+    <section class="manual-delivers block block-divider">
+        <div class="container">
+            <h2 class="text-center">O que você encontrará no manual</h2>
+            <ul>
+                <li>A verdade sobre os ingredientes das rações comerciais e como decifrar os rótulos</li>
+                <li>Os 7 mitos da nutrição canina que a indústria perpetua</li>
+                <li>Guia prático para transição alimentar segura (seja para alimentação natural ou rações realmente saudáveis)</li>
+                <li>Lista de ingredientes essenciais e os que devem ser evitados a qualquer custo</li>
+                <li>Como calcular as porções ideais baseado no peso, idade e nível de atividade do seu cão</li>
+                <li>Receitas simples e nutritivas para começar já</li>
+                <li>Diretrizes para suplementação natural quando necessário</li>
+            </ul>
+        </div>
+    </section>
+    
+    <!-- BLOCO 7 - Para quem é / não é -->
+    <section class="audience block block-divider">
+        <div class="container">
+            <h2 class="text-center">Este manual é para quem...</h2>
+            <div class="columns">
+                <div class="audience-column">
+                    <h3>É para você se:</h3>
+                    <ul>
+                        <li>Se preocupa genuinamente com a saúde do seu cão</li>
+                        <li>Está cansado de tentar soluções que não funcionam</li>
+                        <li>Quer tomar decisões informadas sobre nutrição</li>
+                        <li>Está disposto a questionar o que lhe foi ensinado</li>
+                        <li>Busca longevidade e qualidade de vida para seu companheiro</li>
+                    </ul>
+                </div>
+                <div class="audience-column">
+                    <h3>Não é para você se:</h3>
+                    <ul>
+                        <li>Prefere a comodidade cega ao conhecimento</li>
+                        <li>Acredita que o marketing sempre diz a verdade</li>
+                        <li>Não está disposto a repensar hábitos</li>
+                        <li>Busca soluções mágicas sem esforço</li>
+                        <li>Considera seu cão apenas um "animal de estimação"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 8 - Oferta -->
+    <section id="oferta" class="offer block block-divider">
+        <div class="container">
+            <div class="offer-content">
+                <h2>Manual: Nutrição Consciente Canina</h2>
+                <p>80 páginas de informação densa, sem floreios, focada exclusivamente em dar a você o conhecimento necessário para tomar as melhores decisões nutricionais para seu cão.</p>
+                <div class="price">R$ 97</div>
+                <p>Acesso imediato em formato digital (PDF).</p>
+                <p>Sem mensalidades, sem renovação automática.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 9 - CTA final -->
+    <section class="final-cta block">
+        <div class="container">
+            <h2 class="text-center">Decida agora o que entra na tigela do seu cão</h2>
+            <p class="text-center text-narrow">Não deixe a indústria decidir pela você. Tome as rédeas da saúde do seu companheiro com conhecimento real, não com marketing.</p>
+            <div style="margin-top: var(--space-lg);">
+                <a href="#oferta" class="btn btn-large">Sim, quero fazer a escolha consciente</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- RODAPÉ -->
+    <footer class="block">
+        <div class="container">
+            <p>Este produto é de caráter informativo e educativo. Não substitui a orientação de um médico veterinário qualificado. Consulte sempre um profissional para questões específicas de saúde do seu animal.</p>
+            <p>© 2023 Vida de Cão - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
 </html>
