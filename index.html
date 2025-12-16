@@ -6,7 +6,7 @@
     <title>Vida de Cão: O que você coloca na sua tigela?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         /* Reset e configurações gerais */
         * {
@@ -16,18 +16,28 @@
         }
 
         :root {
-            --preto-profundo: #0B0B0B;
-            --preto-carvão: #141414;
+            --preto-profundo: #050505;
+            --preto-carvão: #0F0F0F;
             --preto-carvão-claro: #1A1A1A;
-            --branco-suave: #F2F2F2;
-            --cinza-claro: #B5B5B5;
+            --branco-suave: #F0F0F0;
+            --branco-frio: #FAFAFA;
+            --cinza-claro: #AAAAAA;
+            --cinza-medio: #777777;
             --dourado-fosco: #C9A24D;
+            --dourado-claro: #E2C375;
+            --dourado-escuro: #A88434;
             --verde-saude: #3FA96B;
             --vermelho-alerta: #C94A4A;
-            --espacamento-grande: 120px;
-            --espacamento-medio: 80px;
-            --espacamento-pequeno: 40px;
-            --borda-fina: 1px solid rgba(201, 162, 77, 0.2);
+            --espacamento-xxl: 180px;
+            --espacamento-xl: 140px;
+            --espacamento-lg: 100px;
+            --espacamento-md: 60px;
+            --espacamento-sm: 30px;
+            --borda-fina: 0.5px solid rgba(201, 162, 77, 0.15);
+            --borda-media: 1px solid rgba(201, 162, 77, 0.25);
+            --transicao-lenta: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+            --transicao-media: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            --transicao-rapida: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         html {
@@ -37,13 +47,16 @@
         body {
             font-family: 'Inter', sans-serif;
             font-weight: 300;
-            line-height: 1.6;
+            line-height: 1.8;
             color: var(--branco-suave);
             background-color: var(--preto-profundo);
             overflow-x: hidden;
             position: relative;
+            font-size: 16px;
+            letter-spacing: 0.02em;
         }
 
+        /* Textura de fundo premium */
         body::before {
             content: '';
             position: fixed;
@@ -51,73 +64,108 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a24d' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(201, 162, 77, 0.02) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(63, 169, 107, 0.01) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(11, 11, 11, 0) 0%, transparent 100%);
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        /* Grão sutil premium */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.02"/%3E%3C/svg%3E');
+            opacity: 0.12;
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Tipografia */
-        h1, h2, h3, h4 {
-            font-weight: 800;
-            line-height: 1.1;
+        /* Tipografia premium */
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.05;
             letter-spacing: -0.02em;
+            text-rendering: optimizeLegibility;
         }
 
         h1 {
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            margin-bottom: 1rem;
+            font-size: clamp(4rem, 10vw, 9rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
         }
 
         h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 2rem;
         }
 
         h3 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h4 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
             margin-bottom: 1rem;
         }
 
         p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
             color: var(--cinza-claro);
+            line-height: 1.9;
         }
 
-        .texto-destaque {
-            color: var(--branco-suave);
-            font-weight: 400;
+        .lead {
+            font-size: 1.4rem;
+            line-height: 2;
+            color: var(--branco-frio);
         }
 
-        .texto-grande {
-            font-size: 1.3rem;
-            line-height: 1.8;
+        .text-small {
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--cinza-medio);
         }
 
-        .texto-pequeno {
-            font-size: 0.9rem;
-            color: var(--cinza-claro);
+        .text-micro {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         /* Utilitários */
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
+        }
+
+        .container-narrow {
+            max-width: 900px;
+        }
+
+        .container-wide {
+            max-width: 1600px;
         }
 
         .section {
-            padding: var(--espacamento-grande) 0;
+            padding: var(--espacamento-xxl) 0;
             position: relative;
         }
 
-        .section-divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--dourado-fosco), transparent);
-            margin: var(--espacamento-medio) 0;
+        .section-tight {
+            padding: var(--espacamento-xl) 0;
         }
 
         .text-center {
@@ -128,47 +176,122 @@
             text-align: right;
         }
 
-        .mb-small {
-            margin-bottom: var(--espacamento-pequeno);
+        .mb-xxl {
+            margin-bottom: var(--espacamento-xxl);
         }
 
-        .mb-medium {
-            margin-bottom: var(--espacamento-medio);
+        .mb-xl {
+            margin-bottom: var(--espacamento-xl);
         }
 
-        .mb-large {
-            margin-bottom: var(--espacamento-grande);
+        .mb-lg {
+            margin-bottom: var(--espacamento-lg);
         }
 
+        .mb-md {
+            margin-bottom: var(--espacamento-md);
+        }
+
+        .mb-sm {
+            margin-bottom: var(--espacamento-sm);
+        }
+
+        .pt-xxl {
+            padding-top: var(--espacamento-xxl);
+        }
+
+        .pb-xxl {
+            padding-bottom: var(--espacamento-xxl);
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--dourado-fosco) 50%, transparent 100%);
+            margin: var(--espacamento-lg) 0;
+            opacity: 0.3;
+        }
+
+        .divider-vertical {
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(180deg, transparent 0%, var(--dourado-fosco) 50%, transparent 100%);
+            margin: 0 auto;
+            opacity: 0.3;
+        }
+
+        /* Destaques tipográficos */
         .destaque-dourado {
             color: var(--dourado-fosco);
-            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .destaque-dourado::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--dourado-fosco);
+            opacity: 0.5;
         }
 
         .destaque-verde {
             color: var(--verde-saude);
+            font-weight: 500;
         }
 
         .destaque-vermelho {
             color: var(--vermelho-alerta);
+            font-weight: 500;
         }
 
-        /* Botões */
-        .btn {
+        .underline-elegante {
+            text-decoration: none;
+            position: relative;
             display: inline-block;
-            padding: 18px 40px;
+        }
+
+        .underline-elegante::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--dourado-fosco), transparent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--transicao-media);
+        }
+
+        .underline-elegante:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Botões premium */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px 50px;
             font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
+            font-weight: 500;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             text-decoration: none;
-            border: 1px solid var(--dourado-fosco);
+            border: var(--borda-media);
             background-color: transparent;
             color: var(--branco-suave);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all var(--transicao-media);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .btn::before {
@@ -178,212 +301,370 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.1), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.05), transparent);
+            transition: left 1s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .btn:hover {
-            box-shadow: 0 0 20px rgba(201, 162, 77, 0.2);
+            box-shadow: 
+                0 0 40px rgba(201, 162, 77, 0.1),
+                inset 0 0 20px rgba(201, 162, 77, 0.05);
+            border-color: var(--dourado-claro);
+            color: var(--dourado-claro);
+            transform: translateY(-2px);
         }
 
         .btn:hover::before {
             left: 100%;
         }
 
-        /* Hero Section */
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section Ultra Premium */
         .hero {
-            min-height: 100vh;
+            min-height: 110vh;
             display: flex;
             align-items: center;
             position: relative;
-            padding: 80px 0;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(201, 162, 77, 0.03) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--cinza-claro);
+        .hero-headline {
+            font-size: clamp(5rem, 12vw, 11rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
             margin-bottom: 3rem;
-            max-width: 600px;
+            position: relative;
         }
 
-        /* Seção Manifesto */
+        .hero-headline::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--dourado-fosco), transparent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--cinza-claro);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Número de seção elegante */
+        .section-number {
+            position: absolute;
+            top: 0;
+            right: 40px;
+            font-size: 14rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            color: rgba(201, 162, 77, 0.03);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            z-index: -1;
+        }
+
+        /* Seção Manifesto Ultra Premium */
         .manifesto-section {
-            padding: var(--espacamento-grande) 0;
+            position: relative;
         }
 
         .manifesto-block {
-            margin-bottom: var(--espacamento-grande);
-            padding: 60px 0;
+            margin-bottom: var(--espacamento-xxl);
+            position: relative;
+            padding: 80px 0;
+        }
+
+        .manifesto-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 100%;
             border-top: var(--borda-fina);
             border-bottom: var(--borda-fina);
+            pointer-events: none;
         }
 
         .manifesto-text {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            line-height: 1.1;
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            font-weight: 700;
+            line-height: 1.05;
             letter-spacing: -0.02em;
-            color: var(--branco-suave);
+            color: var(--branco-frio);
             text-align: center;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            position: relative;
         }
 
-        /* Seção Consciência */
+        .manifesto-text::after {
+            content: '▪';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--dourado-fosco);
+            font-size: 2rem;
+            opacity: 0.5;
+        }
+
+        /* Seção Consciência Premium */
+        .consciencia-section {
+            position: relative;
+        }
+
         .consciencia-content {
+            position: relative;
             max-width: 700px;
-            margin: 0 auto;
+            margin-left: 10%;
         }
 
-        .consciencia-text-block {
-            margin-bottom: 3rem;
-        }
-
-        /* Seção História */
+        /* Seção História Premium */
         .historia-section {
-            background-color: var(--preto-carvão);
-            padding: var(--espacamento-grande) 0;
+            background-color: rgba(15, 15, 15, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .historia-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(201, 162, 77, 0.02) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .historia-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Seção Reposicionamento */
+        /* Seção Reposicionamento Premium */
+        .reposicionamento-section {
+            position: relative;
+        }
+
         .reposicionamento-block {
-            padding: 60px 0;
-            border-top: var(--borda-fina);
-            border-bottom: var(--borda-fina);
-            margin-bottom: var(--espacamento-medio);
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .reposicionamento-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.02), transparent);
+            pointer-events: none;
         }
 
         .reposicionamento-text {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            line-height: 1.2;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
             letter-spacing: -0.02em;
-            color: var(--branco-suave);
-            max-width: 900px;
+            color: var(--branco-frio);
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
         }
 
-        .underline-dourado {
-            text-decoration: underline;
-            text-decoration-color: var(--dourado-fosco);
-            text-decoration-thickness: 2px;
-            text-underline-offset: 5px;
-        }
-
-        /* Seção Imagens */
+        /* Seção Imagens Premium */
         .imagens-section {
-            padding: var(--espacamento-grande) 0;
+            position: relative;
         }
 
         .imagens-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: var(--espacamento-medio);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: var(--espacamento-lg);
         }
 
         .imagem-item {
             position: relative;
             overflow: hidden;
+            height: 600px;
+            cursor: pointer;
+        }
+
+        .imagem-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(5, 5, 5, 0.9) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .imagem-item img {
             width: 100%;
-            height: 400px;
+            height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(110%);
-            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: grayscale(100%) contrast(120%) brightness(90%);
+            transition: all var(--transicao-lenta);
         }
 
         .imagem-item:hover img {
-            transform: scale(1.03);
-            filter: grayscale(50%) contrast(110%);
+            filter: grayscale(30%) contrast(110%) brightness(100%);
+            transform: scale(1.05);
         }
 
         .imagem-legenda {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(transparent, rgba(11, 11, 11, 0.9));
+            bottom: 30px;
+            left: 30px;
             color: var(--dourado-fosco);
             font-size: 0.9rem;
-            text-align: center;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            z-index: 2;
+            opacity: 0.8;
+            transition: opacity var(--transicao-media);
         }
 
-        /* Seção Manual */
+        .imagem-item:hover .imagem-legenda {
+            opacity: 1;
+        }
+
+        /* Seção Manual Premium */
         .manual-section {
-            padding: var(--espacamento-grande) 0;
+            position: relative;
         }
 
-        .manual-lista {
-            max-width: 800px;
-            margin: 0 auto;
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
         }
 
         .manual-item {
+            position: relative;
+            padding: 40px;
+            border: var(--borda-fina);
+            transition: all var(--transicao-media);
+            height: 100%;
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 2.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: var(--borda-fina);
+            flex-direction: column;
         }
 
-        .manual-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .manual-item:hover {
+            border-color: var(--dourado-fosco);
+            background-color: rgba(201, 162, 77, 0.02);
+            transform: translateY(-10px);
         }
 
-        .manual-icone {
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            margin-right: 20px;
-            border: 1px solid var(--dourado-fosco);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .manual-numero {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 700;
             color: var(--dourado-fosco);
-            font-size: 1.2rem;
+            opacity: 0.3;
+            margin-bottom: 20px;
+            line-height: 1;
         }
 
-        .manual-conteudo h4 {
-            color: var(--branco-suave);
-            margin-bottom: 0.5rem;
+        .manual-item h4 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        /* Seção Para Quem */
+        .manual-item h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 1px;
+            background-color: var(--dourado-fosco);
+        }
+
+        /* Seção Para Quem Premium */
         .para-quem-section {
-            padding: var(--espacamento-grande) 0;
-            background-color: var(--preto-carvão-claro);
+            position: relative;
+            background-color: rgba(10, 10, 10, 0.8);
         }
 
         .para-quem-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
+            position: relative;
+        }
+
+        .para-quem-coluna {
+            padding: 60px;
+            position: relative;
+        }
+
+        .para-quem-coluna.eh {
+            border-right: var(--borda-fina);
+        }
+
+        .para-quem-coluna::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(201, 162, 77, 0.01));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity var(--transicao-media);
+        }
+
+        .para-quem-coluna:hover::before {
+            opacity: 1;
         }
 
         .para-quem-coluna h3 {
-            margin-bottom: 2rem;
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         .para-quem-coluna h3::after {
@@ -391,9 +672,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
+            width: 60px;
             height: 2px;
-            background-color: var(--dourado-fosco);
         }
 
         .para-quem-coluna.eh h3::after {
@@ -409,44 +689,71 @@
         }
 
         .para-quem-lista li {
-            margin-bottom: 1.5rem;
-            padding-left: 25px;
+            margin-bottom: 25px;
+            padding-left: 30px;
             position: relative;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
 
         .para-quem-lista li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 8px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+            top: 12px;
+            width: 10px;
+            height: 10px;
+            border: 1px solid;
         }
 
         .para-quem-coluna.eh .para-quem-lista li::before {
-            background-color: var(--verde-saude);
+            border-color: var(--verde-saude);
         }
 
         .para-quem-coluna.nao-eh .para-quem-lista li::before {
-            background-color: var(--vermelho-alerta);
+            border-color: var(--vermelho-alerta);
         }
 
-        /* CTA Final */
+        /* CTA Final Premium */
         .cta-final {
-            padding: var(--espacamento-grande) 0;
+            position: relative;
+            padding: var(--espacamento-xxl) 0;
+            overflow: hidden;
+        }
+
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(201, 162, 77, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .assinatura {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--dourado-fosco);
             text-align: center;
+            margin-top: 60px;
+            font-style: italic;
+            letter-spacing: 0.05em;
         }
 
-        .cta-final h2 {
-            max-width: 700px;
-            margin: 0 auto 3rem;
-        }
-
-        /* Rodapé */
+        /* Rodapé Premium */
         .footer {
-            padding: 40px 0;
+            padding: 60px 0;
             border-top: var(--borda-fina);
+            position: relative;
         }
 
         .footer-content {
@@ -457,242 +764,376 @@
         }
 
         .footer-logo {
-            font-size: 1.2rem;
-            font-weight: 800;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--dourado-fosco);
-            letter-spacing: 0.1em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
         }
 
         .footer-disclaimer {
-            font-size: 0.8rem;
-            color: var(--cinza-claro);
-            max-width: 500px;
+            font-size: 0.85rem;
+            color: var(--cinza-medio);
+            max-width: 600px;
             text-align: right;
+            line-height: 1.8;
         }
 
-        /* Animações */
+        /* Animações premium */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            animation: fadeInUp 1.2s var(--transicao-lenta) forwards;
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .fade-in-slow {
+            opacity: 0;
+            animation: fadeIn 2s var(--transicao-lenta) forwards;
         }
 
-        /* Responsividade */
-        @media (max-width: 992px) {
-            :root {
-                --espacamento-grande: 80px;
-                --espacamento-medio: 60px;
-                --espacamento-pequeno: 30px;
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        .delay-5 {
+            animation-delay: 1s;
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100px;
+            background: linear-gradient(180deg, var(--dourado-fosco), transparent);
+            opacity: 0.5;
+            z-index: 10;
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px;
+            background: var(--dourado-fosco);
+            animation: scrollIndicator 2s infinite ease-in-out;
+        }
+
+        @keyframes scrollIndicator {
+            0% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0;
             }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) translateY(70px);
+                opacity: 0;
+            }
+        }
 
+        /* Responsividade premium */
+        @media (max-width: 1200px) {
+            :root {
+                --espacamento-xxl: 140px;
+                --espacamento-xl: 100px;
+                --espacamento-lg: 80px;
+                --espacamento-md: 50px;
+                --espacamento-sm: 25px;
+            }
+            
+            .imagens-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .manual-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 30px;
+            }
+            
             .para-quem-grid {
                 grid-template-columns: 1fr;
-                gap: var(--espacamento-medio);
+                gap: 60px;
+            }
+            
+            .para-quem-coluna.eh {
+                border-right: none;
+                border-bottom: var(--borda-fina);
+                padding-bottom: 60px;
+            }
+            
+            .section-number {
+                font-size: 10rem;
+                right: 30px;
             }
         }
 
         @media (max-width: 768px) {
             :root {
-                --espacamento-grande: 60px;
-                --espacamento-medio: 40px;
-                --espacamento-pequeno: 20px;
+                --espacamento-xxl: 100px;
+                --espacamento-xl: 80px;
+                --espacamento-lg: 60px;
+                --espacamento-md: 40px;
+                --espacamento-sm: 20px;
             }
-
+            
             h1 {
-                font-size: clamp(2.5rem, 7vw, 4rem);
+                font-size: clamp(3rem, 8vw, 5rem);
             }
-
+            
+            .hero-headline {
+                font-size: clamp(3.5rem, 9vw, 6rem);
+            }
+            
             .manifesto-text {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+            
+            .reposicionamento-text {
                 font-size: clamp(2rem, 4vw, 3rem);
             }
-
-            .reposicionamento-text {
-                font-size: clamp(1.8rem, 4vw, 2.5rem);
-            }
-
+            
             .imagens-grid {
                 grid-template-columns: 1fr;
             }
-
+            
+            .imagem-item {
+                height: 500px;
+            }
+            
+            .consciencia-content {
+                margin-left: 0;
+            }
+            
             .footer-content {
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
                 text-align: center;
             }
-
+            
             .footer-disclaimer {
                 text-align: center;
             }
         }
 
         @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
             .btn {
-                padding: 15px 30px;
+                padding: 18px 30px;
                 font-size: 1rem;
             }
-
+            
             .manual-item {
-                flex-direction: column;
+                padding: 30px;
             }
-
-            .manual-icone {
-                margin-right: 0;
-                margin-bottom: 15px;
+            
+            .para-quem-coluna {
+                padding: 40px 20px;
+            }
+            
+            .section-number {
+                font-size: 8rem;
+                right: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Hero Section Ultra Premium -->
     <section class="hero section">
-        <div class="container">
-            <div class="hero-content fade-in">
-                <h1>Alguns erros na alimentação do seu cachorro não causam problema hoje.</h1>
-                <div class="hero-subtitle">Eles se acumulam.</div>
-                <a href="#cta-final" class="btn">Quero tomar decisões melhores</a>
+        <div class="scroll-indicator"></div>
+        <div class="container container-narrow">
+            <div class="hero-content">
+                <div class="text-small fade-in">Manifesto editorial sobre nutrição canina consciente</div>
+                <h1 class="hero-headline fade-in delay-1">Alguns erros na alimentação do seu cachorro não causam problema hoje.</h1>
+                <p class="hero-subtitle fade-in delay-2">Eles se acumulam silenciosamente. Manifestam-se anos depois, quando já não há retorno.</p>
+                <a href="#cta-final" class="btn fade-in delay-3"><span>Quero tomar decisões melhores</span></a>
             </div>
         </div>
     </section>
 
-    <!-- Seção Manifesto -->
+    <!-- Seção Manifesto Ultra Premium -->
     <section class="manifesto-section section">
-        <div class="container">
-            <div class="manifesto-block fade-in">
-                <div class="manifesto-text">Consciência não é exagero.</div>
+        <div class="section-number">I</div>
+        <div class="container container-narrow">
+            <div class="manifesto-block">
+                <div class="manifesto-text fade-in">Consciência não é exagero.</div>
             </div>
             
-            <div class="manifesto-block fade-in">
-                <div class="manifesto-text">Excesso não faz barulho.</div>
+            <div class="manifesto-block">
+                <div class="manifesto-text fade-in delay-1">Excesso não faz barulho.</div>
             </div>
             
-            <div class="manifesto-block fade-in">
-                <div class="manifesto-text">Responsabilidade é silenciosa.</div>
+            <div class="manifesto-block">
+                <div class="manifesto-text fade-in delay-2">Responsabilidade é silenciosa.</div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Consciência -->
+    <!-- Seção Consciência Premium -->
     <section class="consciencia-section section">
+        <div class="section-number">II</div>
         <div class="container">
             <div class="consciencia-content">
-                <div class="consciencia-text-block fade-in">
-                    <h2 class="mb-medium">O que você não vê</h2>
-                    <p class="texto-grande">As consequências das escolhas alimentares para o seu cão são graduais. Invisíveis no dia a dia, manifestam-se anos depois, quando já não há retorno.</p>
+                <div class="mb-xl fade-in">
+                    <h2 class="mb-md">O que você não vê</h2>
+                    <p class="lead">As consequências das escolhas alimentares para o seu cão são graduais. Invisíveis no dia a dia, manifestam-se anos depois, quando já não há retorno.</p>
                 </div>
                 
-                <div class="consciencia-text-block fade-in">
-                    <p class="texto-grande">Não se trata de alarmismo. Trata-se de entender que cada refeição é um investimento na saúde, na vitalidade e nos anos de vida do seu cão.</p>
+                <div class="fade-in delay-1">
+                    <p class="lead">Não se trata de alarmismo. Trata-se de entender que cada refeição é um investimento na saúde, na vitalidade e nos anos de vida do seu cão.</p>
                 </div>
                 
-                <div class="section-divider"></div>
+                <div class="divider fade-in delay-2"></div>
             </div>
         </div>
     </section>
 
-    <!-- Seção História -->
+    <!-- Seção História Premium -->
     <section class="historia-section section">
-        <div class="container">
-            <div class="historia-content fade-in">
-                <h2 class="mb-medium">A História que não contam</h2>
-                <p class="texto-grande mb-small">A alimentação canina foi sequestrada por uma indústria que prioriza o prazo de validade, o custo de produção e a palatabilidade artificial. O resultado são ingredientes de baixa biodisponibilidade, <span class="destaque-vermelho">excesso</span> de carboidratos e aditivos questionáveis.</p>
-                <p class="texto-grande">Enquanto isso, problemas renais, hepáticos, alergias e obesidade canina crescem de forma silenciosa, normalizados como "doenças da idade".</p>
+        <div class="section-number">III</div>
+        <div class="container container-narrow">
+            <div class="historia-content">
+                <h2 class="mb-md fade-in">A História que não contam</h2>
+                <p class="lead mb-md fade-in delay-1">A alimentação canina foi sequestrada por uma indústria que prioriza o prazo de validade, o custo de produção e a palatabilidade artificial. O resultado são ingredientes de baixa biodisponibilidade, <span class="destaque-vermelho">excesso</span> de carboidratos e aditivos questionáveis.</p>
+                <p class="lead fade-in delay-2">Enquanto isso, problemas renais, hepáticos, alergias e obesidade canina crescem de forma silenciosa, normalizados como "doenças da idade".</p>
             </div>
         </div>
     </section>
 
-    <!-- Seção Reposicionamento -->
-    <section class="reposicionamento-section section">
-        <div class="container">
-            <div class="reposicionamento-block fade-in">
-                <div class="reposicionamento-text">
-                    Isso não é <span class="underline-dourado">cozinhar</span> para cachorro.
+    <!-- Seção Reposicionamento Premium -->
+    <section class="reposicionamento-section section-tight">
+        <div class="section-number">IV</div>
+        <div class="container container-narrow">
+            <div class="reposicionamento-block">
+                <div class="reposicionamento-text fade-in">
+                    Isso não é <span class="underline-elegante">cozinhar</span> para cachorro.
                 </div>
             </div>
             
-            <div class="reposicionamento-block fade-in">
-                <div class="reposicionamento-text">
-                    É entender <span class="underline-dourado">nutrição</span>, proporção e necessidade.
+            <div class="reposicionamento-block">
+                <div class="reposicionamento-text fade-in delay-1">
+                    É entender <span class="underline-elegante">nutrição</span>, proporção e necessidade.
                 </div>
             </div>
+            
+            <div class="divider-vertical fade-in delay-2"></div>
         </div>
     </section>
 
-    <!-- Seção Imagens -->
+    <!-- Seção Imagens Premium -->
     <section class="imagens-section section">
-        <div class="container">
-            <h2 class="text-center mb-medium fade-in">Visões do essencial</h2>
+        <div class="section-number">V</div>
+        <div class="container container-wide">
+            <h2 class="text-center mb-lg fade-in">Visões do essencial</h2>
             
             <div class="imagens-grid">
                 <figure class="imagem-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cachorro em ambiente neutro, olhar sério">
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Cachorro em ambiente neutro, olhar sério">
                     <figcaption class="imagem-legenda">Observação atenta</figcaption>
                 </figure>
                 
-                <figure class="imagem-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Close em comida real e saudável para cães">
+                <figure class="imagem-item fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Close em comida real e saudável para cães">
                     <figcaption class="imagem-legenda">Ingredientes reais</figcaption>
                 </figure>
                 
-                <figure class="imagem-item fade-in">
-                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mãos segurando tigela para cachorro">
+                <figure class="imagem-item fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Mãos segurando tigela para cachorro">
                     <figcaption class="imagem-legenda">A entrega cuidadosa</figcaption>
                 </figure>
             </div>
             
-            <div class="section-divider"></div>
+            <div class="divider fade-in delay-3"></div>
         </div>
     </section>
 
-    <!-- Seção O que o Manual Entrega -->
+    <!-- Seção Manual Premium -->
     <section class="manual-section section">
-        <div class="container">
-            <h2 class="text-center mb-large fade-in">O que o manual entrega</h2>
+        <div class="section-number">VI</div>
+        <div class="container container-narrow">
+            <h2 class="text-center mb-lg fade-in">O que o manual entrega</h2>
             
-            <div class="manual-lista">
+            <div class="manual-grid">
                 <div class="manual-item fade-in">
-                    <div class="manual-icone">1</div>
-                    <div class="manual-conteudo">
-                        <h4>Desmistificação dos ingredientes</h4>
-                        <p>Entenda o que realmente está na composição das rações premium e como interpretar rótulos sem cair em marketing enganoso.</p>
-                    </div>
+                    <div class="manual-numero">01</div>
+                    <h4>Desmistificação dos ingredientes</h4>
+                    <p>Entenda o que realmente está na composição das rações premium e como interpretar rótulos sem cair em marketing enganoso. Saiba identificar os aditivos desnecessários e os ingredientes de verdadeiro valor nutricional.</p>
                 </div>
                 
-                <div class="manual-item fade-in">
-                    <div class="manual-icone">2</div>
-                    <div class="manual-conteudo">
-                        <h4>Proporções corretas por porte e idade</h4>
-                        <p>Nada de estimativas genéricas. Tabelas precisas baseadas em peso, nível de atividade e fase da vida do seu cão.</p>
-                    </div>
+                <div class="manual-item fade-in delay-1">
+                    <div class="manual-numero">02</div>
+                    <h4>Proporções corretas por porte e idade</h4>
+                    <p>Nada de estimativas genéricas. Tabelas precisas baseadas em peso, nível de atividade e fase da vida do seu cão. Inclui cálculos específicos para raças grandes, médias e pequenas em diferentes fases da vida.</p>
                 </div>
                 
-                <div class="manual-item fade-in">
-                    <div class="manual-icone">3</div>
-                    <div class="manual-conteudo">
-                        <h4>Protocolo de transição alimentar</h4>
-                        <p>Como mudar a alimentação do seu cão sem causar estresse digestivo, independentemente da idade ou condição atual.</p>
-                    </div>
+                <div class="manual-item fade-in delay-2">
+                    <div class="manual-numero">03</div>
+                    <h4>Protocolo de transição alimentar</h4>
+                    <p>Como mudar a alimentação do seu cão sem causar estresse digestivo, independentemente da idade ou condição atual. Método passo a passo com acompanhamento de sinais de adaptação e ajustes necessários.</p>
                 </div>
                 
-                <div class="manual-item fade-in">
-                    <div class="manual-icone">4</div>
-                    <div class="manual-conteudo">
-                        <h4>Sinais de alerta e ajustes necessários</h4>
-                        <p>Aprenda a identificar os sinais sutis de que a alimentação atual não está adequada e como ajustar de forma precisa.</p>
-                    </div>
+                <div class="manual-item fade-in delay-3">
+                    <div class="manual-numero">04</div>
+                    <h4>Sinais de alerta e ajustes necessários</h4>
+                    <p>Aprenda a identificar os sinais sutis de que a alimentação atual não está adequada e como ajustar de forma precisa. Inclui monitoramento de pelagem, energia, peso e saúde digestiva.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Para Quem É / Não É -->
+    <!-- Seção Para Quem Premium -->
     <section class="para-quem-section section">
-        <div class="container">
-            <h2 class="text-center mb-large fade-in">Para quem é este manual</h2>
+        <div class="section-number">VII</div>
+        <div class="container container-narrow">
+            <h2 class="text-center mb-lg fade-in">Para quem é este manual</h2>
             
             <div class="para-quem-grid">
                 <div class="para-quem-coluna eh fade-in">
@@ -703,10 +1144,11 @@
                         <li>Busca autonomia nas decisões sobre a saúde do seu cão</li>
                         <li>Valora qualidade de vida acima de conveniência</li>
                         <li>Compreende que mudanças significativas exigem consistência</li>
+                        <li>Está pronto para observar e ajustar conforme a resposta do animal</li>
                     </ul>
                 </div>
                 
-                <div class="para-quem-coluna nao-eh fade-in">
+                <div class="para-quem-coluna nao-eh fade-in delay-1">
                     <h3>Não é para quem</h3>
                     <ul class="para-quem-lista">
                         <li>Busca soluções rápidas e milagrosas</li>
@@ -714,61 +1156,121 @@
                         <li>Espera uma lista genérica de "alimentos proibidos e permitidos"</li>
                         <li>Acredita que todas as raças e idades têm as mesmas necessidades</li>
                         <li>Não está disposto a observar e ajustar conforme a resposta do animal</li>
+                        <li>Prefere a comodidade do pré-fabricado à precisão do personalizado</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
+    <!-- CTA Final Premium -->
     <section id="cta-final" class="cta-final section">
-        <div class="container">
-            <h2 class="fade-in">O silêncio das escolhas certas</h2>
-            <p class="texto-grande mb-large fade-in">A saúde do seu cão não anuncia sua chegada. Ela simplesmente está presente, dia após dia, ano após ano.</p>
-            
-            <a href="#" class="btn fade-in">Quero tomar decisões melhores</a>
+        <div class="container container-narrow">
+            <div class="cta-content">
+                <h2 class="text-center mb-md fade-in">O silêncio das escolhas certas</h2>
+                <p class="lead text-center mb-lg fade-in delay-1">A saúde do seu cão não anuncia sua chegada. Ela simplesmente está presente, dia após dia, ano após ano, na vitalidade discreta, na pelagem brilhante, no olhar atento.</p>
+                
+                <div class="text-center fade-in delay-2">
+                    <a href="#" class="btn"><span>Quero tomar decisões melhores</span></a>
+                </div>
+                
+                <div class="assinatura fade-in delay-3">Vida de Cão</div>
+            </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
-    <footer class="footer section">
+    <!-- Rodapé Premium -->
+    <footer class="footer section-tight">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">VIDA DE CÃO</div>
-                <div class="footer-disclaimer">Conteúdo educativo. Não substitui orientação veterinária. Todo animal é único e pode necessitar de acompanhamento profissional individualizado.</div>
+                <div class="footer-disclaimer">Conteúdo educativo. Não substitui orientação veterinária. Todo animal é único e pode necessitar de acompanhamento profissional individualizado. Consulte sempre um veterinário de confiança para decisões sobre a saúde do seu cão.</div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Script para animações de fade-in ao rolar a página
+        // Script para animações de entrada mais sofisticadas
         document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const fadeInObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
+            // Observador para elementos com animação
+            const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todos os elementos com classe fade-in
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
             });
             
-            fadeElements.forEach(element => {
-                fadeInObserver.observe(element);
+            // Efeito parallax sutil para imagens
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.imagem-item img');
+                
+                parallaxElements.forEach(element => {
+                    const rate = element.getAttribute('data-rate') || 0.3;
+                    const offset = scrolled * rate;
+                    element.style.transform = `translateY(${offset}px) scale(1.05)`;
+                });
             });
             
-            // Adiciona um atraso para alguns elementos para criar um efeito de sequência
-            const manifestoBlocks = document.querySelectorAll('.manifesto-block');
-            manifestoBlocks.forEach((block, index) => {
-                block.style.transitionDelay = `${index * 0.2}s`;
+            // Efeito de digitação para o hero (opcional)
+            const heroSubtitle = document.querySelector('.hero-subtitle');
+            if (heroSubtitle) {
+                const text = heroSubtitle.textContent;
+                heroSubtitle.textContent = '';
+                
+                let i = 0;
+                const typeWriter = () => {
+                    if (i < text.length) {
+                        heroSubtitle.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 30);
+                    }
+                };
+                
+                // Iniciar após um pequeno delay
+                setTimeout(typeWriter, 1000);
+            }
+            
+            // Efeito de brilho sutil em elementos dourados
+            const douradoElements = document.querySelectorAll('.destaque-dourado, .btn');
+            douradoElements.forEach(el => {
+                el.addEventListener('mouseenter', function() {
+                    this.style.filter = 'brightness(1.2)';
+                });
+                
+                el.addEventListener('mouseleave', function() {
+                    this.style.filter = 'brightness(1)';
+                });
             });
             
-            const manualItems = document.querySelectorAll('.manual-item');
-            manualItems.forEach((item, index) => {
-                item.style.transitionDelay = `${index * 0.1}s`;
+            // Navegação suave para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
