@@ -1,1215 +1,775 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida de cão: O que você realmente oferece na tigela?</title>
+    <title>Vida de Cão: O que você coloca na sua tigela?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* RESET & BASE STYLES */
+        /* Reset e configurações gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         :root {
-            /* PALETA DE CORES PREMIUM */
-            --color-black: #0A0A0A;
-            --color-white: #FFFFFF;
-            --color-gray-light: #F5F5F5;
-            --color-gray-medium: #D6D6D6;
-            --color-gray-dark: #8A8A8A;
-            --color-accent: #0F4C3A; /* Verde petróleo premium */
-            --color-accent-light: #1A6B4F;
-            --color-overlay: rgba(15, 76, 58, 0.85);
-            
-            /* TIPOGRAFIA PREMIUM */
-            --font-primary: 'Manrope', sans-serif;
-            --font-weight-light: 300;
-            --font-weight-regular: 400;
-            --font-weight-medium: 500;
-            --font-weight-semibold: 600;
-            --font-weight-bold: 700;
-            --font-weight-extrabold: 800;
-            
-            /* ESPAÇAMENTOS PREMIUM */
-            --space-xs: 0.75rem;
-            --space-sm: 1.5rem;
-            --space-md: 3rem;
-            --space-lg: 6rem;
-            --space-xl: 9rem;
-            --space-xxl: 12rem;
-            
-            /* LARGURAS */
-            --container-max: 1200px;
-            
-            /* ANIMAÇÕES */
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --preto-profundo: #0B0B0B;
+            --preto-carvão: #141414;
+            --preto-carvão-claro: #1A1A1A;
+            --branco-suave: #F2F2F2;
+            --cinza-claro: #B5B5B5;
+            --dourado-fosco: #C9A24D;
+            --verde-saude: #3FA96B;
+            --vermelho-alerta: #C94A4A;
+            --espacamento-grande: 120px;
+            --espacamento-medio: 80px;
+            --espacamento-pequeno: 40px;
+            --borda-fina: 1px solid rgba(201, 162, 77, 0.2);
         }
-        
+
         html {
-            font-size: 18px;
             scroll-behavior: smooth;
         }
-        
+
         body {
-            font-family: var(--font-primary);
-            font-weight: var(--font-weight-regular);
-            line-height: 1.7;
-            color: var(--color-black);
-            background-color: var(--color-white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--branco-suave);
+            background-color: var(--preto-profundo);
             overflow-x: hidden;
+            position: relative;
         }
-        
-        /* ANIMAÇÕES GLOBAIS */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23c9a24d' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
         }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
+
+        /* Tipografia */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
         }
-        
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
+
+        h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            margin-bottom: 1rem;
         }
-        
-        /* LAYOUT CONTAINER */
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--cinza-claro);
+        }
+
+        .texto-destaque {
+            color: var(--branco-suave);
+            font-weight: 400;
+        }
+
+        .texto-grande {
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .texto-pequeno {
+            font-size: 0.9rem;
+            color: var(--cinza-claro);
+        }
+
+        /* Utilitários */
         .container {
             width: 100%;
-            max-width: var(--container-max);
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 var(--space-md);
+            padding: 0 20px;
         }
-        
-        /* TIPOGRAFIA HIERARQUIA BRUTAL PREMIUM */
-        h1, h2, h3 {
-            font-weight: var(--font-weight-extrabold);
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: var(--space-sm);
-        }
-        
-        h1 {
-            font-size: 4rem;
-            margin-bottom: var(--space-sm);
-            background: linear-gradient(135deg, var(--color-black) 0%, var(--color-accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        h2 {
-            font-size: 3rem;
-            position: relative;
-            display: inline-block;
-            margin-bottom: var(--space-md);
-        }
-        
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: var(--color-accent);
-            border-radius: 2px;
-        }
-        
-        h2.text-center:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        h3 {
-            font-size: 1.75rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .subheadline {
-            font-size: 1.5rem;
-            font-weight: var(--font-weight-medium);
-            color: var(--color-gray-dark);
-            margin-bottom: var(--space-md);
-            line-height: 1.4;
-        }
-        
-        p {
-            margin-bottom: var(--space-md);
-            font-size: 1.125rem;
-            line-height: 1.8;
-            color: var(--color-black);
-        }
-        
-        .text-emphasis {
-            font-weight: var(--font-weight-semibold);
-            color: var(--color-accent);
+
+        .section {
+            padding: var(--espacamento-grande) 0;
             position: relative;
         }
-        
-        .text-emphasis:after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
+
+        .section-divider {
             width: 100%;
-            height: 2px;
-            background: var(--color-accent);
-            opacity: 0.3;
-            border-radius: 1px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--dourado-fosco), transparent);
+            margin: var(--espacamento-medio) 0;
         }
-        
+
         .text-center {
             text-align: center;
         }
-        
-        .text-narrow {
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+
+        .text-right {
+            text-align: right;
         }
-        
-        /* BOTÕES - CTA PREMIUM */
+
+        .mb-small {
+            margin-bottom: var(--espacamento-pequeno);
+        }
+
+        .mb-medium {
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .mb-large {
+            margin-bottom: var(--espacamento-grande);
+        }
+
+        .destaque-dourado {
+            color: var(--dourado-fosco);
+            font-weight: 700;
+        }
+
+        .destaque-verde {
+            color: var(--verde-saude);
+        }
+
+        .destaque-vermelho {
+            color: var(--vermelho-alerta);
+        }
+
+        /* Botões */
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-            color: var(--color-white);
-            font-family: var(--font-primary);
-            font-weight: var(--font-weight-semibold);
-            font-size: 1.125rem;
+            display: inline-block;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
             text-decoration: none;
-            padding: 1.25rem 3.5rem;
-            border-radius: 12px;
-            border: none;
+            border: 1px solid var(--dourado-fosco);
+            background-color: transparent;
+            color: var(--branco-suave);
             cursor: pointer;
-            transition: var(--transition-smooth);
-            text-align: center;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(15, 76, 58, 0.2);
         }
-        
-        .btn:before {
+
+        .btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.7s;
+            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.1), transparent);
+            transition: left 0.5s ease;
         }
-        
+
         .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(15, 76, 58, 0.3);
+            box-shadow: 0 0 20px rgba(201, 162, 77, 0.2);
         }
-        
-        .btn:hover:before {
+
+        .btn:hover::before {
             left: 100%;
         }
-        
-        .btn:active {
-            transform: translateY(-2px);
-        }
-        
-        .btn-large {
-            font-size: 1.25rem;
-            padding: 1.5rem 5rem;
-            border-radius: 16px;
-        }
-        
-        .btn-outline {
-            background: transparent;
-            color: var(--color-accent);
-            border: 2px solid var(--color-accent);
-            box-shadow: none;
-        }
-        
-        .btn-outline:hover {
-            background: var(--color-accent);
-            color: var(--color-white);
-        }
-        
-        /* BLOCO COMUM PREMIUM */
-        .block {
-            padding: var(--space-xl) 0;
-            position: relative;
-        }
-        
-        .block-divider {
-            border-bottom: 1px solid rgba(214, 214, 214, 0.3);
-        }
-        
-        /* BLOCO 1 - HERO PREMIUM */
+
+        /* Hero Section */
         .hero {
-            padding-top: var(--space-xl);
-            padding-bottom: var(--space-xl);
             min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden;
+            padding: 80px 0;
         }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(245, 245, 245, 0.8) 0%, rgba(245, 245, 245, 0.4) 100%);
-            z-index: -1;
-        }
-        
+
         .hero-content {
-            max-width: 700px;
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        .hero-image {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 45%;
-            height: 70%;
-            background: linear-gradient(45deg, #e0e0e0, #f0f0f0);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-        }
-        
-        .hero-image:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, transparent 50%, rgba(255,255,255,0.8));
-        }
-        
-        .image-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-gray-dark);
-            font-weight: var(--font-weight-medium);
-            text-align: center;
-            padding: var(--space-md);
-        }
-        
-        .image-placeholder i {
-            font-size: 3rem;
-            margin-bottom: var(--space-sm);
-            color: var(--color-gray-medium);
-        }
-        
-        /* BLOCO 2 - Quebra de falsa segurança PREMIUM */
-        .false-security {
-            background-color: var(--color-white);
-        }
-        
-        .false-security .content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .false-security-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-lg);
-            align-items: center;
-            margin-top: var(--space-lg);
-        }
-        
-        .false-security-image {
-            height: 400px;
-            background: linear-gradient(45deg, #e8e8e8, #f8f8f8);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        }
-        
-        /* BLOCO 3 - Verdade incômoda PREMIUM */
-        .uncomfortable-truth {
-            background: linear-gradient(135deg, var(--color-gray-light) 0%, #eaeaea 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .uncomfortable-truth:before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: var(--color-accent);
-            opacity: 0.05;
-            border-radius: 50%;
-        }
-        
-        .uncomfortable-truth:after {
-            content: '';
-            position: absolute;
-            bottom: -150px;
-            left: -150px;
-            width: 400px;
-            height: 400px;
-            background: var(--color-accent);
-            opacity: 0.05;
-            border-radius: 50%;
-        }
-        
-        .uncomfortable-truth .content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .truth-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: var(--space-xl);
-            flex-wrap: wrap;
-            gap: var(--space-md);
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: var(--space-md);
-            background: var(--color-white);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            min-width: 200px;
-            transition: var(--transition-smooth);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: var(--font-weight-extrabold);
-            color: var(--color-accent);
-            line-height: 1;
-            margin-bottom: var(--space-xs);
-        }
-        
-        .stat-text {
-            font-size: 1rem;
-            font-weight: var(--font-weight-medium);
-            color: var(--color-black);
-        }
-        
-        /* BLOCO 4 - História do Alf PREMIUM */
-        .alf-story {
-            background: var(--color-white);
-        }
-        
-        .alf-story-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-        
-        .alf-image {
-            height: 500px;
-            background: linear-gradient(45deg, #d0d0d0, #e8e8e8);
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* BLOCO 5 - Reposicionamento PREMIUM */
-        .repositioning {
-            background: linear-gradient(135deg, var(--color-accent) 0%, #1A6B4F 100%);
-            color: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .repositioning:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
-        }
-        
-        .repositioning h2 {
-            color: var(--color-white);
-        }
-        
-        .repositioning h2:after {
-            background: var(--color-white);
-        }
-        
-        .repositioning .content {
             max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
-        
-        .repositioning-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
-        
-        .repositioning-item {
-            text-align: center;
-            padding: var(--space-lg) var(--space-md);
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition-smooth);
-        }
-        
-        .repositioning-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-10px);
-        }
-        
-        .repositioning-item i {
-            font-size: 2.5rem;
-            margin-bottom: var(--space-md);
-            color: var(--color-white);
-        }
-        
-        /* BLOCO 6 - O que o manual entrega PREMIUM */
-        .manual-delivers {
-            background: var(--color-white);
-        }
-        
-        .manual-delivers ul {
-            list-style: none;
-            max-width: 800px;
-            margin: var(--space-lg) auto 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--space-md);
-        }
-        
-        .manual-delivers li {
-            position: relative;
-            padding: var(--space-md) var(--space-md) var(--space-md) 4rem;
-            background: var(--color-gray-light);
-            border-radius: 12px;
-            margin-bottom: 0;
-            font-size: 1.125rem;
-            transition: var(--transition-smooth);
-            border-left: 4px solid transparent;
-        }
-        
-        .manual-delivers li:hover {
-            border-left-color: var(--color-accent);
-            transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
-        
-        .manual-delivers li:before {
-            content: "→";
-            position: absolute;
-            left: var(--space-md);
-            top: var(--space-md);
-            color: var(--color-accent);
-            font-weight: var(--font-weight-bold);
+
+        .hero-subtitle {
             font-size: 1.5rem;
+            color: var(--cinza-claro);
+            margin-bottom: 3rem;
+            max-width: 600px;
         }
-        
-        /* BLOCO 7 - Para quem é / não é PREMIUM */
-        .audience {
-            background: linear-gradient(135deg, #fafafa 0%, var(--color-gray-light) 100%);
+
+        /* Seção Manifesto */
+        .manifesto-section {
+            padding: var(--espacamento-grande) 0;
         }
-        
-        .audience .columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            max-width: 1000px;
-            margin: var(--space-lg) auto 0;
+
+        .manifesto-block {
+            margin-bottom: var(--espacamento-grande);
+            padding: 60px 0;
+            border-top: var(--borda-fina);
+            border-bottom: var(--borda-fina);
         }
-        
-        .audience-column {
-            padding: var(--space-xl);
-            background: var(--color-white);
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
-            transition: var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
+
+        .manifesto-text {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            color: var(--branco-suave);
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
-        
-        .audience-column:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+
+        /* Seção Consciência */
+        .consciencia-content {
+            max-width: 700px;
+            margin: 0 auto;
         }
-        
-        .audience-column:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+
+        .consciencia-text-block {
+            margin-bottom: 3rem;
         }
-        
-        .audience-column.is-for:before {
-            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+
+        /* Seção História */
+        .historia-section {
+            background-color: var(--preto-carvão);
+            padding: var(--espacamento-grande) 0;
         }
-        
-        .audience-column.not-for:before {
-            background: linear-gradient(90deg, #8A8A8A 0%, #B0B0B0 100%);
-        }
-        
-        .audience-column h3 {
-            padding-bottom: var(--space-sm);
-            border-bottom: 1px solid var(--color-gray-medium);
-            margin-bottom: var(--space-md);
-        }
-        
-        .audience-column ul {
-            list-style: none;
-        }
-        
-        .audience-column li {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: var(--space-sm);
-            font-size: 1.125rem;
-        }
-        
-        .audience-column.is-for li:before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-accent);
-            font-weight: var(--font-weight-bold);
-        }
-        
-        .audience-column.not-for li:before {
-            content: '✗';
-            position: absolute;
-            left: 0;
-            color: var(--color-gray-dark);
-            font-weight: var(--font-weight-bold);
-        }
-        
-        /* BLOCO 8 - Oferta PREMIUM */
-        .offer {
-            background: var(--color-white);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .offer:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(245, 245, 245, 0.5) 0%, rgba(245, 245, 245, 0) 100%);
-            z-index: -1;
-        }
-        
-        .offer-content {
+
+        .historia-content {
             max-width: 800px;
             margin: 0 auto;
-            padding: var(--space-xl);
-            background: var(--color-white);
-            border-radius: 24px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(214, 214, 214, 0.5);
-            position: relative;
-            z-index: 2;
         }
-        
-        .price {
-            font-size: 4.5rem;
-            font-weight: var(--font-weight-extrabold);
-            color: var(--color-accent);
-            margin: var(--space-md) 0;
-            position: relative;
-            display: inline-block;
+
+        /* Seção Reposicionamento */
+        .reposicionamento-block {
+            padding: 60px 0;
+            border-top: var(--borda-fina);
+            border-bottom: var(--borda-fina);
+            margin-bottom: var(--espacamento-medio);
         }
-        
-        .price:after {
-            content: '';
+
+        .reposicionamento-text {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            color: var(--branco-suave);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .underline-dourado {
+            text-decoration: underline;
+            text-decoration-color: var(--dourado-fosco);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 5px;
+        }
+
+        /* Seção Imagens */
+        .imagens-section {
+            padding: var(--espacamento-grande) 0;
+        }
+
+        .imagens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: var(--espacamento-medio);
+        }
+
+        .imagem-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .imagem-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(110%);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .imagem-item:hover img {
+            transform: scale(1.03);
+            filter: grayscale(50%) contrast(110%);
+        }
+
+        .imagem-legenda {
             position: absolute;
-            bottom: 10px;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
-            opacity: 0.3;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(11, 11, 11, 0.9));
+            color: var(--dourado-fosco);
+            font-size: 0.9rem;
+            text-align: center;
         }
-        
-        .price-note {
-            font-size: 1rem;
-            color: var(--color-gray-dark);
-            font-style: italic;
-            margin-top: -10px;
+
+        /* Seção Manual */
+        .manual-section {
+            padding: var(--espacamento-grande) 0;
         }
-        
-        .offer-bonuses {
-            margin-top: var(--space-lg);
-            padding-top: var(--space-lg);
-            border-top: 1px solid var(--color-gray-medium);
+
+        .manual-lista {
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        .bonus-item {
+
+        .manual-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: var(--borda-fina);
+        }
+
+        .manual-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .manual-icone {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            border: 1px solid var(--dourado-fosco);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .bonus-item i {
-            color: var(--color-accent);
-            font-size: 1.25rem;
-        }
-        
-        /* BLOCO 9 - CTA final PREMIUM */
-        .final-cta {
-            background: linear-gradient(135deg, var(--color-black) 0%, #2A2A2A 100%);
-            color: var(--color-white);
-            text-align: center;
-        }
-        
-        .final-cta h2 {
-            color: var(--color-white);
-        }
-        
-        .final-cta h2:after {
-            background: var(--color-white);
-        }
-        
-        .cta-animation {
-            margin-top: var(--space-lg);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        /* RODAPÉ PREMIUM */
-        footer {
-            padding: var(--space-xl) 0;
-            background: var(--color-black);
-            color: var(--color-gray-dark);
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        footer p {
-            margin-bottom: var(--space-sm);
-            font-size: 0.9rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--color-gray-dark);
-        }
-        
-        footer a {
-            color: var(--color-gray-medium);
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        
-        footer a:hover {
-            color: var(--color-white);
-        }
-        
-        .footer-links {
-            display: flex;
             justify-content: center;
-            gap: var(--space-md);
-            margin-top: var(--space-md);
+            color: var(--dourado-fosco);
+            font-size: 1.2rem;
+        }
+
+        .manual-conteudo h4 {
+            color: var(--branco-suave);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Seção Para Quem */
+        .para-quem-section {
+            padding: var(--espacamento-grande) 0;
+            background-color: var(--preto-carvão-claro);
+        }
+
+        .para-quem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .para-quem-coluna h3 {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .para-quem-coluna h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--dourado-fosco);
+        }
+
+        .para-quem-coluna.eh h3::after {
+            background-color: var(--verde-saude);
+        }
+
+        .para-quem-coluna.nao-eh h3::after {
+            background-color: var(--vermelho-alerta);
+        }
+
+        .para-quem-lista {
+            list-style: none;
+        }
+
+        .para-quem-lista li {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .para-quem-lista li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .para-quem-coluna.eh .para-quem-lista li::before {
+            background-color: var(--verde-saude);
+        }
+
+        .para-quem-coluna.nao-eh .para-quem-lista li::before {
+            background-color: var(--vermelho-alerta);
+        }
+
+        /* CTA Final */
+        .cta-final {
+            padding: var(--espacamento-grande) 0;
+            text-align: center;
+        }
+
+        .cta-final h2 {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Rodapé */
+        .footer {
+            padding: 40px 0;
+            border-top: var(--borda-fina);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             flex-wrap: wrap;
         }
-        
-        /* RESPONSIVIDADE PREMIUM */
-        @media (max-width: 1200px) {
-            html {
-                font-size: 16px;
-            }
-            
-            h1 {
-                font-size: 3.5rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-image {
-                width: 40%;
-            }
+
+        .footer-logo {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--dourado-fosco);
+            letter-spacing: 0.1em;
         }
-        
+
+        .footer-disclaimer {
+            font-size: 0.8rem;
+            color: var(--cinza-claro);
+            max-width: 500px;
+            text-align: right;
+        }
+
+        /* Animações */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsividade */
         @media (max-width: 992px) {
             :root {
-                --space-xl: 6rem;
-                --space-xxl: 9rem;
+                --espacamento-grande: 80px;
+                --espacamento-medio: 60px;
+                --espacamento-pequeno: 30px;
             }
-            
+
+            .para-quem-grid {
+                grid-template-columns: 1fr;
+                gap: var(--espacamento-medio);
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --espacamento-grande: 60px;
+                --espacamento-medio: 40px;
+                --espacamento-pequeno: 20px;
+            }
+
             h1 {
-                font-size: 3rem;
+                font-size: clamp(2.5rem, 7vw, 4rem);
             }
-            
-            h2 {
-                font-size: 2.25rem;
+
+            .manifesto-text {
+                font-size: clamp(2rem, 4vw, 3rem);
             }
-            
-            .hero {
-                min-height: auto;
-                padding-top: var(--space-lg);
-                padding-bottom: var(--space-lg);
+
+            .reposicionamento-text {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
             }
-            
-            .hero:before {
-                width: 100%;
-                height: 50%;
-                top: 0;
-            }
-            
-            .hero-image {
-                position: relative;
-                width: 100%;
-                height: 400px;
-                margin-top: var(--space-lg);
-                transform: none;
-                top: 0;
-            }
-            
-            .false-security-grid,
-            .alf-story-content,
-            .repositioning-grid,
-            .manual-delivers ul,
-            .audience .columns {
+
+            .imagens-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .false-security-image,
-            .alf-image {
-                height: 300px;
-                order: -1;
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
             }
-            
-            .repositioning-item {
-                padding: var(--space-md);
-            }
-            
-            .offer-content {
-                padding: var(--space-lg);
-            }
-            
-            .price {
-                font-size: 3.5rem;
+
+            .footer-disclaimer {
+                text-align: center;
             }
         }
-        
-        @media (max-width: 768px) {
-            html {
-                font-size: 15px;
+
+        @media (max-width: 576px) {
+            .btn {
+                padding: 15px 30px;
+                font-size: 1rem;
             }
-            
-            h1 {
-                font-size: 2.5rem;
+
+            .manual-item {
+                flex-direction: column;
             }
-            
-            h2 {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 0 var(--space-sm);
-            }
-            
-            .block {
-                padding: var(--space-lg) 0;
-            }
-            
-            .hero {
-                padding-top: var(--space-md);
-                padding-bottom: var(--space-md);
-            }
-            
-            .btn-large {
-                font-size: 1.125rem;
-                padding: 1.25rem 3rem;
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .price {
-                font-size: 3rem;
-            }
-            
-            .stat-item {
-                min-width: 150px;
-                padding: var(--space-sm);
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .audience-column {
-                padding: var(--space-lg);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-image,
-            .false-security-image,
-            .alf-image {
-                height: 250px;
-            }
-            
-            .stat-item {
-                min-width: 100%;
-            }
-            
-            .repositioning-item i {
-                font-size: 2rem;
-            }
-            
-            .manual-delivers li {
-                padding: var(--space-sm) var(--space-sm) var(--space-sm) 3rem;
+
+            .manual-icone {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- BLOCO 1 - HERO PREMIUM -->
-    <section class="hero block">
+    <!-- Hero Section -->
+    <section class="hero section">
         <div class="container">
-            <div class="hero-content">
-                <h1>O que você realmente oferece na tigela?</h1>
-                <p class="subheadline">A verdade não contada sobre nutrição canina que a indústria de alimentos para pets não quer que você descubra.</p>
-                <a href="#oferta" class="btn">Descubra a verdade <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="hero-image">
-                <div class="image-placeholder">
-                    <i class="fas fa-dog"></i>
-                    <p>Imagem premium: Cachorro em ambiente sofisticado com tigela de comida natural</p>
-                </div>
+            <div class="hero-content fade-in">
+                <h1>Alguns erros na alimentação do seu cachorro não causam problema hoje.</h1>
+                <div class="hero-subtitle">Eles se acumulam.</div>
+                <a href="#cta-final" class="btn">Quero tomar decisões melhores</a>
             </div>
         </div>
     </section>
-    
-    <!-- BLOCO 2 - Quebra de falsa segurança PREMIUM -->
-    <section class="false-security block block-divider">
+
+    <!-- Seção Manifesto -->
+    <section class="manifesto-section section">
         <div class="container">
-            <div class="content">
-                <h2>A ilusão do marketing sofisticado</h2>
-                <p>Rótulos com palavras como "natural", "premium" e "saudável" criam uma falsa sensação de segurança. Mas a realidade dos ingredientes conta uma história diferente.</p>
-                
-                <div class="false-security-grid">
-                    <div>
-                        <p><span class="text-emphasis">Subprodutos animais de qualidade questionável</span> disfarçados de "proteína de frango".</p>
-                        <p><span class="text-emphasis">Grãos transgênicos e conservantes químicos</span> que comprometem a saúde digestiva a longo prazo.</p>
-                        <p><span class="text-emphasis">Corantes artificiais</span> que servem apenas para agradar seu olho, não o estômago do seu cão.</p>
-                    </div>
-                    <div class="false-security-image">
-                        <div class="image-placeholder">
-                            <i class="fas fa-tags"></i>
-                            <p>Imagem: Comparativo entre embalagem sofisticada e ingredientes reais</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="manifesto-block fade-in">
+                <div class="manifesto-text">Consciência não é exagero.</div>
             </div>
-        </div>
-    </section>
-    
-    <!-- BLOCO 3 - Verdade incômoda PREMIUM -->
-    <section class="uncomfortable-truth block block-divider">
-        <div class="container">
-            <div class="content text-center">
-                <h2 class="text-center">Os números que ninguém mostra</h2>
-                <p class="text-narrow">A nutrição inadequada tem consequências reais e mensuráveis na saúde canina.</p>
-                
-                <div class="truth-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">83%</div>
-                        <div class="stat-text">dos tutores não sabem ler corretamente os rótulos de ração</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3x</div>
-                        <div class="stat-text">maior risco de problemas renais com dietas inadequadas</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">40%</div>
-                        <div class="stat-text">dos cães desenvolvem alergias alimentares não diagnosticadas</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- BLOCO 4 - História do Alf PREMIUM -->
-    <section class="alf-story block block-divider">
-        <div class="container">
-            <div class="alf-story-content">
-                <div class="alf-image">
-                    <div class="image-placeholder">
-                        <i class="fas fa-history"></i>
-                        <p>Imagem: Transformação de saúde canina - antes e depois da nutrição adequada</p>
-                    </div>
-                </div>
-                <div>
-                    <h2>Alf: A jornada que mudou tudo</h2>
-                    <p>Aos 7 anos, meu Border Collie apresentou os primeiros sinais: coceiras incessantes, falta de energia, problemas digestivos. Os veterinários recomendavam rações "especiais" cada vez mais caras, mas os sintomas apenas pioravam.</p>
-                    <p>Minha busca por respostas levou-me a estudos científicos sobre nutrição canina ancestral. Descobri que nossos cães domésticos compartilham 99,9% do DNA com lobos - predores carnívoros por natureza.</p>
-                    <p>A transformação foi gradual mas radical. Em três meses com alimentação realmente adequada, Alf renasceu: pelagem brilhante, energia renovada, vitalidade restaurada.</p>
-                    <p>Essa jornada pessoal revelou uma verdade inconveniente: precisamos falar sobre o que realmente importa na nutrição canina.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- BLOCO 5 - Reposicionamento PREMIUM -->
-    <section class="repositioning block block-divider">
-        <div class="container">
-            <div class="content text-center">
-                <h2 class="text-center">Mais do que alimentação: uma filosofia</h2>
-                <p class="text-narrow">Nutrir um cão é um ato de responsabilidade que vai além de encher uma tigela.</p>
-                
-                <div class="repositioning-grid">
-                    <div class="repositioning-item">
-                        <i class="fas fa-seedling"></i>
-                        <h3>Consciência</h3>
-                        <p>Entender o impacto de cada escolha nutricional</p>
-                    </div>
-                    <div class="repositioning-item">
-                        <i class="fas fa-heartbeat"></i>
-                        <h3>Longevidade</h3>
-                        <p>Anos extras de vida com qualidade e vitalidade</p>
-                    </div>
-                    <div class="repositioning-item">
-                        <i class="fas fa-hand-holding-heart"></i>
-                        <h3>Responsabilidade</h3>
-                        <p>Cuidar de um ser que depende inteiramente de você</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- BLOCO 6 - O que o manual entrega PREMIUM -->
-    <section class="manual-delivers block block-divider">
-        <div class="container">
-            <h2 class="text-center">O que você vai dominar</h2>
-            <p class="text-center text-narrow">Conhecimento denso, aplicável e transformador sobre nutrição canina consciente.</p>
             
-            <ul>
-                <li>Decifrar rótulos: entenda o que realmente está na composição</li>
-                <li>Os 7 mitos perpetuados pela indústria e a verdade por trás deles</li>
-                <li>Transição alimentar segura: passo a passo detalhado</li>
-                <li>Ingredientes essenciais vs. tóxicos: guia definitivo</li>
-                <li>Cálculo preciso de porções baseado em peso, idade e atividade</li>
-                <li>Receitas nutricionalmente completas e simples de preparar</li>
-                <li>Suplementação natural: quando e como utilizar</li>
-                <li>Monitoramento de saúde: sinais de nutrição adequada</li>
-            </ul>
+            <div class="manifesto-block fade-in">
+                <div class="manifesto-text">Excesso não faz barulho.</div>
+            </div>
+            
+            <div class="manifesto-block fade-in">
+                <div class="manifesto-text">Responsabilidade é silenciosa.</div>
+            </div>
         </div>
     </section>
-    
-    <!-- BLOCO 7 - Para quem é / não é PREMIUM -->
-    <section class="audience block block-divider">
+
+    <!-- Seção Consciência -->
+    <section class="consciencia-section section">
         <div class="container">
-            <h2 class="text-center">Este caminho é para você?</h2>
+            <div class="consciencia-content">
+                <div class="consciencia-text-block fade-in">
+                    <h2 class="mb-medium">O que você não vê</h2>
+                    <p class="texto-grande">As consequências das escolhas alimentares para o seu cão são graduais. Invisíveis no dia a dia, manifestam-se anos depois, quando já não há retorno.</p>
+                </div>
+                
+                <div class="consciencia-text-block fade-in">
+                    <p class="texto-grande">Não se trata de alarmismo. Trata-se de entender que cada refeição é um investimento na saúde, na vitalidade e nos anos de vida do seu cão.</p>
+                </div>
+                
+                <div class="section-divider"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção História -->
+    <section class="historia-section section">
+        <div class="container">
+            <div class="historia-content fade-in">
+                <h2 class="mb-medium">A História que não contam</h2>
+                <p class="texto-grande mb-small">A alimentação canina foi sequestrada por uma indústria que prioriza o prazo de validade, o custo de produção e a palatabilidade artificial. O resultado são ingredientes de baixa biodisponibilidade, <span class="destaque-vermelho">excesso</span> de carboidratos e aditivos questionáveis.</p>
+                <p class="texto-grande">Enquanto isso, problemas renais, hepáticos, alergias e obesidade canina crescem de forma silenciosa, normalizados como "doenças da idade".</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Reposicionamento -->
+    <section class="reposicionamento-section section">
+        <div class="container">
+            <div class="reposicionamento-block fade-in">
+                <div class="reposicionamento-text">
+                    Isso não é <span class="underline-dourado">cozinhar</span> para cachorro.
+                </div>
+            </div>
             
-            <div class="columns">
-                <div class="audience-column is-for">
-                    <h3>É para você se:</h3>
-                    <ul>
-                        <li>Busca conhecimento real, não apenas opiniões</li>
-                        <li>Está cansado de soluções superficiais que não funcionam</li>
-                        <li>Valoriza a saúde do seu cão acima da conveniência</li>
-                        <li>Está disposto a questionar o status quo</li>
-                        <li>Deseja anos extras de qualidade de vida para seu companheiro</li>
-                        <li>Reconhece que nutrição é investimento, não gasto</li>
+            <div class="reposicionamento-block fade-in">
+                <div class="reposicionamento-text">
+                    É entender <span class="underline-dourado">nutrição</span>, proporção e necessidade.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Imagens -->
+    <section class="imagens-section section">
+        <div class="container">
+            <h2 class="text-center mb-medium fade-in">Visões do essencial</h2>
+            
+            <div class="imagens-grid">
+                <figure class="imagem-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cachorro em ambiente neutro, olhar sério">
+                    <figcaption class="imagem-legenda">Observação atenta</figcaption>
+                </figure>
+                
+                <figure class="imagem-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Close em comida real e saudável para cães">
+                    <figcaption class="imagem-legenda">Ingredientes reais</figcaption>
+                </figure>
+                
+                <figure class="imagem-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Mãos segurando tigela para cachorro">
+                    <figcaption class="imagem-legenda">A entrega cuidadosa</figcaption>
+                </figure>
+            </div>
+            
+            <div class="section-divider"></div>
+        </div>
+    </section>
+
+    <!-- Seção O que o Manual Entrega -->
+    <section class="manual-section section">
+        <div class="container">
+            <h2 class="text-center mb-large fade-in">O que o manual entrega</h2>
+            
+            <div class="manual-lista">
+                <div class="manual-item fade-in">
+                    <div class="manual-icone">1</div>
+                    <div class="manual-conteudo">
+                        <h4>Desmistificação dos ingredientes</h4>
+                        <p>Entenda o que realmente está na composição das rações premium e como interpretar rótulos sem cair em marketing enganoso.</p>
+                    </div>
+                </div>
+                
+                <div class="manual-item fade-in">
+                    <div class="manual-icone">2</div>
+                    <div class="manual-conteudo">
+                        <h4>Proporções corretas por porte e idade</h4>
+                        <p>Nada de estimativas genéricas. Tabelas precisas baseadas em peso, nível de atividade e fase da vida do seu cão.</p>
+                    </div>
+                </div>
+                
+                <div class="manual-item fade-in">
+                    <div class="manual-icone">3</div>
+                    <div class="manual-conteudo">
+                        <h4>Protocolo de transição alimentar</h4>
+                        <p>Como mudar a alimentação do seu cão sem causar estresse digestivo, independentemente da idade ou condição atual.</p>
+                    </div>
+                </div>
+                
+                <div class="manual-item fade-in">
+                    <div class="manual-icone">4</div>
+                    <div class="manual-conteudo">
+                        <h4>Sinais de alerta e ajustes necessários</h4>
+                        <p>Aprenda a identificar os sinais sutis de que a alimentação atual não está adequada e como ajustar de forma precisa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Para Quem É / Não É -->
+    <section class="para-quem-section section">
+        <div class="container">
+            <h2 class="text-center mb-large fade-in">Para quem é este manual</h2>
+            
+            <div class="para-quem-grid">
+                <div class="para-quem-coluna eh fade-in">
+                    <h3>É para quem</h3>
+                    <ul class="para-quem-lista">
+                        <li>Reconhece que a alimentação é o pilar da saúde canina</li>
+                        <li>Está disposto a investir tempo para entender, não apenas seguir receitas</li>
+                        <li>Busca autonomia nas decisões sobre a saúde do seu cão</li>
+                        <li>Valora qualidade de vida acima de conveniência</li>
+                        <li>Compreende que mudanças significativas exigem consistência</li>
                     </ul>
                 </div>
-                <div class="audience-column not-for">
-                    <h3>Não é para você se:</h3>
-                    <ul>
-                        <li>Prefere a ignorância confortável ao conhecimento exigente</li>
-                        <li>Acredita que marketing é sinônimo de qualidade</li>
-                        <li>Não está disposto a investir tempo em aprendizado</li>
-                        <li>Busca soluções mágicas sem envolvimento pessoal</li>
-                        <li>Considera seu cão um "animal" e não um membro da família</li>
-                        <li>Está satisfeito com o mínimo quando o máximo é possível</li>
+                
+                <div class="para-quem-coluna nao-eh fade-in">
+                    <h3>Não é para quem</h3>
+                    <ul class="para-quem-lista">
+                        <li>Busca soluções rápidas e milagrosas</li>
+                        <li>Prioriza apenas o custo na hora de alimentar seu cão</li>
+                        <li>Espera uma lista genérica de "alimentos proibidos e permitidos"</li>
+                        <li>Acredita que todas as raças e idades têm as mesmas necessidades</li>
+                        <li>Não está disposto a observar e ajustar conforme a resposta do animal</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    
-    <!-- BLOCO 8 - Oferta PREMIUM -->
-    <section id="oferta" class="offer block block-divider">
+
+    <!-- CTA Final -->
+    <section id="cta-final" class="cta-final section">
         <div class="container">
-            <div class="offer-content">
-                <h2 class="text-center">Manual: Nutrição Canina Consciente</h2>
-                <p class="text-center text-narrow">124 páginas de conhecimento denso, baseado em evidências científicas e experiência prática. Sem floreios, apenas o essencial para transformar sua compreensão sobre nutrição canina.</p>
-                
-                <div class="text-center">
-                    <div class="price">R$ 147</div>
-                    <p class="price-note">Acesso vitalício • Atualizações inclusas</p>
-                </div>
-                
-                <div class="offer-bonuses">
-                    <h3 class="text-center">Bônus exclusivos:</h3>
-                    <div class="bonus-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Planilha de cálculo nutricional personalizada</span>
-                    </div>
-                    <div class="bonus-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Lista de compras otimizada para alimentação natural</span>
-                    </div>
-                    <div class="bonus-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Guia de emergência: sinais de alerta nutricional</span>
-                    </div>
-                    <div class="bonus-item">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Acesso à comunidade exclusiva de tutores conscientes</span>
-                    </div>
-                </div>
-                
-                <div class="text-center" style="margin-top: var(--space-lg);">
-                    <a href="#" class="btn btn-large">Sim, quero fazer a escolha consciente <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
+            <h2 class="fade-in">O silêncio das escolhas certas</h2>
+            <p class="texto-grande mb-large fade-in">A saúde do seu cão não anuncia sua chegada. Ela simplesmente está presente, dia após dia, ano após ano.</p>
+            
+            <a href="#" class="btn fade-in">Quero tomar decisões melhores</a>
         </div>
     </section>
-    
-    <!-- BLOCO 9 - CTA final PREMIUM -->
-    <section class="final-cta block">
+
+    <!-- Rodapé -->
+    <footer class="footer section">
         <div class="container">
-            <h2 class="text-center">A decisão que define os próximos anos</h2>
-            <p class="text-center text-narrow">Cada refeição é uma escolha. Cada escolha é um investimento no futuro do seu cão.</p>
-            <p class="text-center text-narrow">Não deixe que a indústria decida por você. Tome as rédeas com conhecimento, não com esperança.</p>
-            
-            <div class="cta-animation">
-                <a href="#oferta" class="btn btn-large">Transforme a nutrição do seu cão hoje <i class="fas fa-paw"></i></a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- RODAPÉ PREMIUM -->
-    <footer class="block">
-        <div class="container">
-            <p>© 2023 Vida de Cão - Nutrição Canina Consciente. Todas as informações contidas neste material têm caráter meramente informativo e educativo. Não substituem a orientação de um médico veterinário qualificado. Consulte sempre um profissional para questões específicas de saúde do seu animal.</p>
-            
-            <div class="footer-links">
-                <a href="#">Política de Privacidade</a>
-                <a href="#">Termos de Uso</a>
-                <a href="#">Contato</a>
-                <a href="#">Suporte</a>
+            <div class="footer-content">
+                <div class="footer-logo">VIDA DE CÃO</div>
+                <div class="footer-disclaimer">Conteúdo educativo. Não substitui orientação veterinária. Todo animal é único e pode necessitar de acompanhamento profissional individualizado.</div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Animação suave ao rolar
+        // Script para animações de fade-in ao rolar a página
         document.addEventListener('DOMContentLoaded', function() {
-            // Animação de entrada dos elementos
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            const fadeElements = document.querySelectorAll('.fade-in');
             
-            const observer = new IntersectionObserver(function(entries) {
+            const fadeInObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, observerOptions);
-            
-            // Aplicar animação aos elementos
-            const animatedElements = document.querySelectorAll('.false-security-grid, .truth-stats, .alf-story-content, .repositioning-grid, .manual-delivers ul, .audience .columns, .offer-content');
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
             
-            // Efeito de digitação no hero
-            const heroTitle = document.querySelector('.hero h1');
-            const originalText = heroTitle.textContent;
-            heroTitle.textContent = '';
+            fadeElements.forEach(element => {
+                fadeInObserver.observe(element);
+            });
             
-            let i = 0;
-            const typeWriter = () => {
-                if (i < originalText.length) {
-                    heroTitle.textContent += originalText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 50);
-                }
-            };
+            // Adiciona um atraso para alguns elementos para criar um efeito de sequência
+            const manifestoBlocks = document.querySelectorAll('.manifesto-block');
+            manifestoBlocks.forEach((block, index) => {
+                block.style.transitionDelay = `${index * 0.2}s`;
+            });
             
-            // Iniciar efeito de digitação após 0.5s
-            setTimeout(typeWriter, 500);
+            const manualItems = document.querySelectorAll('.manual-item');
+            manualItems.forEach((item, index) => {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            });
         });
     </script>
 </body>
