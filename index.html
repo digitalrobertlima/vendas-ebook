@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida de cão: O que você coloca na sua tigela?</title>
+    <title>Vida de cão: O que você realmente oferece na tigela?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* RESET & BASE STYLES */
         * {
@@ -16,44 +17,85 @@
         }
         
         :root {
-            /* PALETA DE CORES */
-            --color-black: #111111;
-            --color-white: #ffffff;
-            --color-gray-light: #f8f8f8;
-            --color-gray-medium: #e6e6e6;
-            --color-gray-text: #666666;
-            --color-accent: #1a5c36; /* Verde escuro - saúde/consciência */
+            /* PALETA DE CORES PREMIUM */
+            --color-black: #0A0A0A;
+            --color-white: #FFFFFF;
+            --color-gray-light: #F5F5F5;
+            --color-gray-medium: #D6D6D6;
+            --color-gray-dark: #8A8A8A;
+            --color-accent: #0F4C3A; /* Verde petróleo premium */
+            --color-accent-light: #1A6B4F;
+            --color-overlay: rgba(15, 76, 58, 0.85);
             
-            /* TIPOGRAFIA */
-            --font-primary: 'Inter', sans-serif;
+            /* TIPOGRAFIA PREMIUM */
+            --font-primary: 'Manrope', sans-serif;
+            --font-weight-light: 300;
             --font-weight-regular: 400;
             --font-weight-medium: 500;
+            --font-weight-semibold: 600;
             --font-weight-bold: 700;
             --font-weight-extrabold: 800;
             
-            /* ESPAÇAMENTOS */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 2rem;
-            --space-lg: 4rem;
-            --space-xl: 6rem;
+            /* ESPAÇAMENTOS PREMIUM */
+            --space-xs: 0.75rem;
+            --space-sm: 1.5rem;
+            --space-md: 3rem;
+            --space-lg: 6rem;
+            --space-xl: 9rem;
+            --space-xxl: 12rem;
             
             /* LARGURAS */
-            --container-max: 1100px;
+            --container-max: 1200px;
+            
+            /* ANIMAÇÕES */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
         
         html {
-            font-size: 16px;
+            font-size: 18px;
             scroll-behavior: smooth;
         }
         
         body {
             font-family: var(--font-primary);
             font-weight: var(--font-weight-regular);
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--color-black);
             background-color: var(--color-white);
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        /* ANIMAÇÕES GLOBAIS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 1000px 0;
+            }
         }
         
         /* LAYOUT CONTAINER */
@@ -64,45 +106,82 @@
             padding: 0 var(--space-md);
         }
         
-        /* TIPOGRAFIA HIERARQUIA BRUTAL */
+        /* TIPOGRAFIA HIERARQUIA BRUTAL PREMIUM */
         h1, h2, h3 {
             font-weight: var(--font-weight-extrabold);
-            line-height: 1.2;
-            letter-spacing: -0.02em; /* Tracking levemente negativo */
+            line-height: 1.1;
+            letter-spacing: -0.03em;
             margin-bottom: var(--space-sm);
         }
         
         h1 {
-            font-size: 3rem; /* Grande, dominante */
+            font-size: 4rem;
             margin-bottom: var(--space-sm);
+            background: linear-gradient(135deg, var(--color-black) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         h2 {
-            font-size: 2.25rem;
+            font-size: 3rem;
+            position: relative;
+            display: inline-block;
             margin-bottom: var(--space-md);
         }
         
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+            border-radius: 2px;
+        }
+        
+        h2.text-center:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.75rem;
             margin-bottom: var(--space-sm);
         }
         
         .subheadline {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: var(--font-weight-medium);
-            color: var(--color-gray-text);
+            color: var(--color-gray-dark);
             margin-bottom: var(--space-md);
+            line-height: 1.4;
         }
         
         p {
             margin-bottom: var(--space-md);
             font-size: 1.125rem;
-            line-height: 1.7; /* Confortável, não compacto */
+            line-height: 1.8;
+            color: var(--color-black);
         }
         
         .text-emphasis {
-            font-weight: var(--font-weight-bold);
-            color: var(--color-black);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-accent);
+            position: relative;
+        }
+        
+        .text-emphasis:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--color-accent);
+            opacity: 0.3;
+            border-radius: 1px;
         }
         
         .text-center {
@@ -115,134 +194,431 @@
             margin-right: auto;
         }
         
-        /* BOTÕES - CTA */
+        /* BOTÕES - CTA PREMIUM */
         .btn {
-            display: inline-block;
-            background-color: var(--color-accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
             color: var(--color-white);
             font-family: var(--font-primary);
-            font-weight: var(--font-weight-bold);
+            font-weight: var(--font-weight-semibold);
             font-size: 1.125rem;
             text-decoration: none;
-            padding: 1rem 3rem;
-            border-radius: 6px; /* Levemente arredondadas */
+            padding: 1.25rem 3.5rem;
+            border-radius: 12px;
             border: none;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: var(--transition-smooth);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(15, 76, 58, 0.2);
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
         }
         
         .btn:hover {
-            background-color: #144a2b; /* Leve escurecimento no hover */
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(15, 76, 58, 0.3);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
         }
         
         .btn:active {
-            transform: translateY(1px);
+            transform: translateY(-2px);
         }
         
         .btn-large {
             font-size: 1.25rem;
-            padding: 1.25rem 4rem;
+            padding: 1.5rem 5rem;
+            border-radius: 16px;
         }
         
-        /* BLOCO COMUM */
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        /* BLOCO COMUM PREMIUM */
         .block {
             padding: var(--space-xl) 0;
+            position: relative;
         }
         
         .block-divider {
-            border-bottom: 1px solid var(--color-gray-medium);
+            border-bottom: 1px solid rgba(214, 214, 214, 0.3);
         }
         
-        /* BLOCO 1 - HERO */
+        /* BLOCO 1 - HERO PREMIUM */
         .hero {
             padding-top: var(--space-xl);
             padding-bottom: var(--space-xl);
-            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 245, 245, 0.8) 0%, rgba(245, 245, 245, 0.4) 100%);
+            z-index: -1;
         }
         
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
         }
         
-        /* BLOCO 2 - Quebra de falsa segurança */
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 70%;
+            background: linear-gradient(45deg, #e0e0e0, #f0f0f0);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        
+        .hero-image:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 50%, rgba(255,255,255,0.8));
+        }
+        
+        .image-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-dark);
+            font-weight: var(--font-weight-medium);
+            text-align: center;
+            padding: var(--space-md);
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: var(--space-sm);
+            color: var(--color-gray-medium);
+        }
+        
+        /* BLOCO 2 - Quebra de falsa segurança PREMIUM */
+        .false-security {
+            background-color: var(--color-white);
+        }
+        
         .false-security .content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            position: relative;
         }
         
-        .false-security p {
-            margin-bottom: var(--space-lg);
+        .false-security-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            align-items: center;
+            margin-top: var(--space-lg);
         }
         
-        /* BLOCO 3 - Verdade incômoda */
+        .false-security-image {
+            height: 400px;
+            background: linear-gradient(45deg, #e8e8e8, #f8f8f8);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* BLOCO 3 - Verdade incômoda PREMIUM */
         .uncomfortable-truth {
-            background-color: var(--color-gray-light);
+            background: linear-gradient(135deg, var(--color-gray-light) 0%, #eaeaea 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .uncomfortable-truth:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: var(--color-accent);
+            opacity: 0.05;
+            border-radius: 50%;
+        }
+        
+        .uncomfortable-truth:after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 400px;
+            height: 400px;
+            background: var(--color-accent);
+            opacity: 0.05;
+            border-radius: 50%;
         }
         
         .uncomfortable-truth .content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
-        /* BLOCO 4 - História do Alf */
-        .alf-story {
-            background-color: var(--color-gray-light);
+        .truth-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: var(--space-xl);
+            flex-wrap: wrap;
+            gap: var(--space-md);
         }
         
-        .alf-story .content {
-            max-width: 600px; /* Texto mais estreito para leitura íntima */
-            margin: 0 auto;
-        }
-        
-        /* BLOCO 5 - Reposicionamento */
-        .repositioning .content {
-            max-width: 800px;
-            margin: 0 auto;
+        .stat-item {
             text-align: center;
+            padding: var(--space-md);
+            background: var(--color-white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+            transition: var(--transition-smooth);
         }
         
-        /* BLOCO 6 - O que o manual entrega */
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .stat-text {
+            font-size: 1rem;
+            font-weight: var(--font-weight-medium);
+            color: var(--color-black);
+        }
+        
+        /* BLOCO 4 - História do Alf PREMIUM */
+        .alf-story {
+            background: var(--color-white);
+        }
+        
+        .alf-story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+        
+        .alf-image {
+            height: 500px;
+            background: linear-gradient(45deg, #d0d0d0, #e8e8e8);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* BLOCO 5 - Reposicionamento PREMIUM */
+        .repositioning {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #1A6B4F 100%);
+            color: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .repositioning:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .repositioning h2 {
+            color: var(--color-white);
+        }
+        
+        .repositioning h2:after {
+            background: var(--color-white);
+        }
+        
+        .repositioning .content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .repositioning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .repositioning-item {
+            text-align: center;
+            padding: var(--space-lg) var(--space-md);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition-smooth);
+        }
+        
+        .repositioning-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+        }
+        
+        .repositioning-item i {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--color-white);
+        }
+        
+        /* BLOCO 6 - O que o manual entrega PREMIUM */
+        .manual-delivers {
+            background: var(--color-white);
+        }
+        
         .manual-delivers ul {
             list-style: none;
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: var(--space-lg) auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
         }
         
         .manual-delivers li {
             position: relative;
-            padding-left: 2.5rem;
-            margin-bottom: var(--space-md);
+            padding: var(--space-md) var(--space-md) var(--space-md) 4rem;
+            background: var(--color-gray-light);
+            border-radius: 12px;
+            margin-bottom: 0;
             font-size: 1.125rem;
+            transition: var(--transition-smooth);
+            border-left: 4px solid transparent;
+        }
+        
+        .manual-delivers li:hover {
+            border-left-color: var(--color-accent);
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
         
         .manual-delivers li:before {
-            content: "✓";
+            content: "→";
             position: absolute;
-            left: 0;
-            top: 0;
+            left: var(--space-md);
+            top: var(--space-md);
             color: var(--color-accent);
             font-weight: var(--font-weight-bold);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         
-        /* BLOCO 7 - Para quem é / não é */
+        /* BLOCO 7 - Para quem é / não é PREMIUM */
+        .audience {
+            background: linear-gradient(135deg, #fafafa 0%, var(--color-gray-light) 100%);
+        }
+        
         .audience .columns {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-xl);
-            max-width: 900px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin: var(--space-lg) auto 0;
         }
         
         .audience-column {
-            padding: var(--space-md);
+            padding: var(--space-xl);
+            background: var(--color-white);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .audience-column:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.1);
+        }
+        
+        .audience-column:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+        
+        .audience-column.is-for:before {
+            background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+        }
+        
+        .audience-column.not-for:before {
+            background: linear-gradient(90deg, #8A8A8A 0%, #B0B0B0 100%);
         }
         
         .audience-column h3 {
             padding-bottom: var(--space-sm);
-            border-bottom: 2px solid var(--color-gray-medium);
+            border-bottom: 1px solid var(--color-gray-medium);
             margin-bottom: var(--space-md);
         }
         
@@ -252,48 +628,128 @@
         
         .audience-column li {
             position: relative;
-            padding-left: 1.75rem;
+            padding-left: 2rem;
             margin-bottom: var(--space-sm);
+            font-size: 1.125rem;
         }
         
-        .audience-column li:before {
-            content: "•";
+        .audience-column.is-for li:before {
+            content: '✓';
             position: absolute;
             left: 0;
             color: var(--color-accent);
-            font-size: 1.5rem;
+            font-weight: var(--font-weight-bold);
         }
         
-        /* BLOCO 8 - Oferta */
+        .audience-column.not-for li:before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: var(--color-gray-dark);
+            font-weight: var(--font-weight-bold);
+        }
+        
+        /* BLOCO 8 - Oferta PREMIUM */
         .offer {
-            text-align: center;
+            background: var(--color-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 245, 245, 0.5) 0%, rgba(245, 245, 245, 0) 100%);
+            z-index: -1;
         }
         
         .offer-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
+            padding: var(--space-xl);
+            background: var(--color-white);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(214, 214, 214, 0.5);
+            position: relative;
+            z-index: 2;
         }
         
         .price {
-            font-size: 2.5rem;
+            font-size: 4.5rem;
             font-weight: var(--font-weight-extrabold);
-            color: var(--color-black);
+            color: var(--color-accent);
             margin: var(--space-md) 0;
+            position: relative;
+            display: inline-block;
         }
         
-        /* BLOCO 9 - CTA final */
-        .final-cta {
-            text-align: center;
+        .price:after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent) 0%, transparent 100%);
+            opacity: 0.3;
+        }
+        
+        .price-note {
+            font-size: 1rem;
+            color: var(--color-gray-dark);
+            font-style: italic;
+            margin-top: -10px;
+        }
+        
+        .offer-bonuses {
+            margin-top: var(--space-lg);
             padding-top: var(--space-lg);
-            padding-bottom: var(--space-xl);
+            border-top: 1px solid var(--color-gray-medium);
         }
         
-        /* RODAPÉ */
+        .bonus-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .bonus-item i {
+            color: var(--color-accent);
+            font-size: 1.25rem;
+        }
+        
+        /* BLOCO 9 - CTA final PREMIUM */
+        .final-cta {
+            background: linear-gradient(135deg, var(--color-black) 0%, #2A2A2A 100%);
+            color: var(--color-white);
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            color: var(--color-white);
+        }
+        
+        .final-cta h2:after {
+            background: var(--color-white);
+        }
+        
+        .cta-animation {
+            margin-top: var(--space-lg);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* RODAPÉ PREMIUM */
         footer {
             padding: var(--space-xl) 0;
-            border-top: 1px solid var(--color-gray-medium);
+            background: var(--color-black);
+            color: var(--color-gray-dark);
             text-align: center;
-            color: var(--color-gray-text);
             font-size: 0.9rem;
         }
         
@@ -303,12 +759,111 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--color-gray-dark);
         }
         
-        /* RESPONSIVIDADE - MOBILE FIRST */
+        footer a {
+            color: var(--color-gray-medium);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+        
+        footer a:hover {
+            color: var(--color-white);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+            flex-wrap: wrap;
+        }
+        
+        /* RESPONSIVIDADE PREMIUM */
+        @media (max-width: 1200px) {
+            html {
+                font-size: 16px;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-image {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            :root {
+                --space-xl: 6rem;
+                --space-xxl: 9rem;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.25rem;
+            }
+            
+            .hero {
+                min-height: auto;
+                padding-top: var(--space-lg);
+                padding-bottom: var(--space-lg);
+            }
+            
+            .hero:before {
+                width: 100%;
+                height: 50%;
+                top: 0;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: 400px;
+                margin-top: var(--space-lg);
+                transform: none;
+                top: 0;
+            }
+            
+            .false-security-grid,
+            .alf-story-content,
+            .repositioning-grid,
+            .manual-delivers ul,
+            .audience .columns {
+                grid-template-columns: 1fr;
+            }
+            
+            .false-security-image,
+            .alf-image {
+                height: 300px;
+                order: -1;
+            }
+            
+            .repositioning-item {
+                padding: var(--space-md);
+            }
+            
+            .offer-content {
+                padding: var(--space-lg);
+            }
+            
+            .price {
+                font-size: 3.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             html {
-                font-size: 14px;
+                font-size: 15px;
             }
             
             h1 {
@@ -316,7 +871,7 @@
             }
             
             h2 {
-                font-size: 1.875rem;
+                font-size: 2rem;
             }
             
             .container {
@@ -328,175 +883,334 @@
             }
             
             .hero {
-                padding-top: var(--space-lg);
-                padding-bottom: var(--space-lg);
-            }
-            
-            /* BLOCO 7 - Para quem é / não é - 1 coluna no mobile */
-            .audience .columns {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
+                padding-top: var(--space-md);
+                padding-bottom: var(--space-md);
             }
             
             .btn-large {
                 font-size: 1.125rem;
-                padding: 1rem 2.5rem;
+                padding: 1.25rem 3rem;
                 width: 100%;
                 max-width: 300px;
             }
             
             .price {
-                font-size: 2rem;
+                font-size: 3rem;
+            }
+            
+            .stat-item {
+                min-width: 150px;
+                padding: var(--space-sm);
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .audience-column {
+                padding: var(--space-lg);
             }
         }
         
-        @media (min-width: 1200px) {
-            h1 {
-                font-size: 3.5rem;
+        @media (max-width: 480px) {
+            .hero-image,
+            .false-security-image,
+            .alf-image {
+                height: 250px;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+            }
+            
+            .repositioning-item i {
+                font-size: 2rem;
+            }
+            
+            .manual-delivers li {
+                padding: var(--space-sm) var(--space-sm) var(--space-sm) 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- BLOCO 1 - HERO -->
+    <!-- BLOCO 1 - HERO PREMIUM -->
     <section class="hero block">
         <div class="container">
             <div class="hero-content">
-                <h1>Vida de cão: O que você coloca na sua tigela?</h1>
-                <p class="subheadline">A verdade que a indústria de alimentos para pets não quer que você descubra sobre nutrição canina consciente.</p>
-                <a href="#oferta" class="btn">Quero saber o que realmente importa</a>
+                <h1>O que você realmente oferece na tigela?</h1>
+                <p class="subheadline">A verdade não contada sobre nutrição canina que a indústria de alimentos para pets não quer que você descubra.</p>
+                <a href="#oferta" class="btn">Descubra a verdade <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="hero-image">
+                <div class="image-placeholder">
+                    <i class="fas fa-dog"></i>
+                    <p>Imagem premium: Cachorro em ambiente sofisticado com tigela de comida natural</p>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 2 - Quebra de falsa segurança -->
+    <!-- BLOCO 2 - Quebra de falsa segurança PREMIUM -->
     <section class="false-security block block-divider">
         <div class="container">
             <div class="content">
-                <h2>A falsa segurança da embalagem bonita</h2>
-                <p>Você escolhe a marca com o rótulo mais atraente, aquele que promete "ingredientes naturais" e "nutrição completa".</p>
-                <p>Mas o que realmente está por trás do marketing sofisticado?</p>
-                <p class="text-emphasis">Subprodutos, conservantes químicos, corantes artificiais e grãos de baixa qualidade disfarçados de alimentação premium.</p>
-                <p>A verdade é que a indústria conta com a sua confiança cega. Enquanto você acredita estar fazendo o melhor, o sistema digestivo do seu cão sofre as consequências.</p>
+                <h2>A ilusão do marketing sofisticado</h2>
+                <p>Rótulos com palavras como "natural", "premium" e "saudável" criam uma falsa sensação de segurança. Mas a realidade dos ingredientes conta uma história diferente.</p>
+                
+                <div class="false-security-grid">
+                    <div>
+                        <p><span class="text-emphasis">Subprodutos animais de qualidade questionável</span> disfarçados de "proteína de frango".</p>
+                        <p><span class="text-emphasis">Grãos transgênicos e conservantes químicos</span> que comprometem a saúde digestiva a longo prazo.</p>
+                        <p><span class="text-emphasis">Corantes artificiais</span> que servem apenas para agradar seu olho, não o estômago do seu cão.</p>
+                    </div>
+                    <div class="false-security-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-tags"></i>
+                            <p>Imagem: Comparativo entre embalagem sofisticada e ingredientes reais</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 3 - Verdade incômoda -->
+    <!-- BLOCO 3 - Verdade incômoda PREMIUM -->
     <section class="uncomfortable-truth block block-divider">
         <div class="container">
-            <div class="content">
-                <h2>A verdade que ninguém quer encarar</h2>
-                <p class="text-center">Cães não foram feitos para consumir carboidratos processados em 80% de sua dieta.</p>
-                <p class="text-center">A indústria de ração convencional criou uma dependência de grãos porque são baratos, têm longa validade e enchem o estômago.</p>
-                <p class="text-center text-emphasis">Mas enxer não é nutrir.</p>
+            <div class="content text-center">
+                <h2 class="text-center">Os números que ninguém mostra</h2>
+                <p class="text-narrow">A nutrição inadequada tem consequências reais e mensuráveis na saúde canina.</p>
+                
+                <div class="truth-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">83%</div>
+                        <div class="stat-text">dos tutores não sabem ler corretamente os rótulos de ração</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-text">maior risco de problemas renais com dietas inadequadas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-text">dos cães desenvolvem alergias alimentares não diagnosticadas</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 4 - História do Alf -->
+    <!-- BLOCO 4 - História do Alf PREMIUM -->
     <section class="alf-story block block-divider">
         <div class="container">
-            <div class="content">
-                <h2>Como Alf me fez questionar tudo</h2>
-                <p>Meu border collie começou a ter problemas digestivos aos 7 anos. Coceiras, alergias, falta de energia. Levei a vários veterinários, cada um recomendando uma ração "especial" mais cara que a anterior.</p>
-                <p>Nada funcionava.</p>
-                <p>Até que comecei a pesquisar por conta própria. Descobri estudos sobre nutrição canina ancestral, sobre a verdadeira dieta dos lobos - nossos cães domésticos compartilham 99.9% do DNA com eles.</p>
-                <p>A transformação não foi instantânea, mas em 3 meses com uma alimentação realmente adequada, Alf era outro cão. Pelagem brilhante, energia renovada, problemas digestivos desaparecidos.</p>
-                <p>Foi quando percebi: precisava compartilhar isso.</p>
+            <div class="alf-story-content">
+                <div class="alf-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-history"></i>
+                        <p>Imagem: Transformação de saúde canina - antes e depois da nutrição adequada</p>
+                    </div>
+                </div>
+                <div>
+                    <h2>Alf: A jornada que mudou tudo</h2>
+                    <p>Aos 7 anos, meu Border Collie apresentou os primeiros sinais: coceiras incessantes, falta de energia, problemas digestivos. Os veterinários recomendavam rações "especiais" cada vez mais caras, mas os sintomas apenas pioravam.</p>
+                    <p>Minha busca por respostas levou-me a estudos científicos sobre nutrição canina ancestral. Descobri que nossos cães domésticos compartilham 99,9% do DNA com lobos - predores carnívoros por natureza.</p>
+                    <p>A transformação foi gradual mas radical. Em três meses com alimentação realmente adequada, Alf renasceu: pelagem brilhante, energia renovada, vitalidade restaurada.</p>
+                    <p>Essa jornada pessoal revelou uma verdade inconveniente: precisamos falar sobre o que realmente importa na nutrição canina.</p>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 5 - Reposicionamento -->
+    <!-- BLOCO 5 - Reposicionamento PREMIUM -->
     <section class="repositioning block block-divider">
         <div class="container">
-            <div class="content">
-                <h2>Não se trata apenas de comida</h2>
-                <p>Trata-se de <span class="text-emphasis">consciência</span>.</p>
-                <p>Trata-se de <span class="text-emphasis">responsabilidade</span>.</p>
-                <p>Trata-se de <span class="text-emphasis">longevidade</span> e <span class="text-emphasis">qualidade de vida</span>.</p>
-                <p>Você não está apenas alimentando um animal de estimação.</p>
-                <p class="text-emphasis">Está nutrindo um membro da família.</p>
+            <div class="content text-center">
+                <h2 class="text-center">Mais do que alimentação: uma filosofia</h2>
+                <p class="text-narrow">Nutrir um cão é um ato de responsabilidade que vai além de encher uma tigela.</p>
+                
+                <div class="repositioning-grid">
+                    <div class="repositioning-item">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Consciência</h3>
+                        <p>Entender o impacto de cada escolha nutricional</p>
+                    </div>
+                    <div class="repositioning-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Longevidade</h3>
+                        <p>Anos extras de vida com qualidade e vitalidade</p>
+                    </div>
+                    <div class="repositioning-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Responsabilidade</h3>
+                        <p>Cuidar de um ser que depende inteiramente de você</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 6 - O que o manual entrega -->
+    <!-- BLOCO 6 - O que o manual entrega PREMIUM -->
     <section class="manual-delivers block block-divider">
         <div class="container">
-            <h2 class="text-center">O que você encontrará no manual</h2>
+            <h2 class="text-center">O que você vai dominar</h2>
+            <p class="text-center text-narrow">Conhecimento denso, aplicável e transformador sobre nutrição canina consciente.</p>
+            
             <ul>
-                <li>A verdade sobre os ingredientes das rações comerciais e como decifrar os rótulos</li>
-                <li>Os 7 mitos da nutrição canina que a indústria perpetua</li>
-                <li>Guia prático para transição alimentar segura (seja para alimentação natural ou rações realmente saudáveis)</li>
-                <li>Lista de ingredientes essenciais e os que devem ser evitados a qualquer custo</li>
-                <li>Como calcular as porções ideais baseado no peso, idade e nível de atividade do seu cão</li>
-                <li>Receitas simples e nutritivas para começar já</li>
-                <li>Diretrizes para suplementação natural quando necessário</li>
+                <li>Decifrar rótulos: entenda o que realmente está na composição</li>
+                <li>Os 7 mitos perpetuados pela indústria e a verdade por trás deles</li>
+                <li>Transição alimentar segura: passo a passo detalhado</li>
+                <li>Ingredientes essenciais vs. tóxicos: guia definitivo</li>
+                <li>Cálculo preciso de porções baseado em peso, idade e atividade</li>
+                <li>Receitas nutricionalmente completas e simples de preparar</li>
+                <li>Suplementação natural: quando e como utilizar</li>
+                <li>Monitoramento de saúde: sinais de nutrição adequada</li>
             </ul>
         </div>
     </section>
     
-    <!-- BLOCO 7 - Para quem é / não é -->
+    <!-- BLOCO 7 - Para quem é / não é PREMIUM -->
     <section class="audience block block-divider">
         <div class="container">
-            <h2 class="text-center">Este manual é para quem...</h2>
+            <h2 class="text-center">Este caminho é para você?</h2>
+            
             <div class="columns">
-                <div class="audience-column">
+                <div class="audience-column is-for">
                     <h3>É para você se:</h3>
                     <ul>
-                        <li>Se preocupa genuinamente com a saúde do seu cão</li>
-                        <li>Está cansado de tentar soluções que não funcionam</li>
-                        <li>Quer tomar decisões informadas sobre nutrição</li>
-                        <li>Está disposto a questionar o que lhe foi ensinado</li>
-                        <li>Busca longevidade e qualidade de vida para seu companheiro</li>
+                        <li>Busca conhecimento real, não apenas opiniões</li>
+                        <li>Está cansado de soluções superficiais que não funcionam</li>
+                        <li>Valoriza a saúde do seu cão acima da conveniência</li>
+                        <li>Está disposto a questionar o status quo</li>
+                        <li>Deseja anos extras de qualidade de vida para seu companheiro</li>
+                        <li>Reconhece que nutrição é investimento, não gasto</li>
                     </ul>
                 </div>
-                <div class="audience-column">
+                <div class="audience-column not-for">
                     <h3>Não é para você se:</h3>
                     <ul>
-                        <li>Prefere a comodidade cega ao conhecimento</li>
-                        <li>Acredita que o marketing sempre diz a verdade</li>
-                        <li>Não está disposto a repensar hábitos</li>
-                        <li>Busca soluções mágicas sem esforço</li>
-                        <li>Considera seu cão apenas um "animal de estimação"</li>
+                        <li>Prefere a ignorância confortável ao conhecimento exigente</li>
+                        <li>Acredita que marketing é sinônimo de qualidade</li>
+                        <li>Não está disposto a investir tempo em aprendizado</li>
+                        <li>Busca soluções mágicas sem envolvimento pessoal</li>
+                        <li>Considera seu cão um "animal" e não um membro da família</li>
+                        <li>Está satisfeito com o mínimo quando o máximo é possível</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 8 - Oferta -->
+    <!-- BLOCO 8 - Oferta PREMIUM -->
     <section id="oferta" class="offer block block-divider">
         <div class="container">
             <div class="offer-content">
-                <h2>Manual: Nutrição Consciente Canina</h2>
-                <p>80 páginas de informação densa, sem floreios, focada exclusivamente em dar a você o conhecimento necessário para tomar as melhores decisões nutricionais para seu cão.</p>
-                <div class="price">R$ 97</div>
-                <p>Acesso imediato em formato digital (PDF).</p>
-                <p>Sem mensalidades, sem renovação automática.</p>
+                <h2 class="text-center">Manual: Nutrição Canina Consciente</h2>
+                <p class="text-center text-narrow">124 páginas de conhecimento denso, baseado em evidências científicas e experiência prática. Sem floreios, apenas o essencial para transformar sua compreensão sobre nutrição canina.</p>
+                
+                <div class="text-center">
+                    <div class="price">R$ 147</div>
+                    <p class="price-note">Acesso vitalício • Atualizações inclusas</p>
+                </div>
+                
+                <div class="offer-bonuses">
+                    <h3 class="text-center">Bônus exclusivos:</h3>
+                    <div class="bonus-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Planilha de cálculo nutricional personalizada</span>
+                    </div>
+                    <div class="bonus-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Lista de compras otimizada para alimentação natural</span>
+                    </div>
+                    <div class="bonus-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Guia de emergência: sinais de alerta nutricional</span>
+                    </div>
+                    <div class="bonus-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Acesso à comunidade exclusiva de tutores conscientes</span>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: var(--space-lg);">
+                    <a href="#" class="btn btn-large">Sim, quero fazer a escolha consciente <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- BLOCO 9 - CTA final -->
+    <!-- BLOCO 9 - CTA final PREMIUM -->
     <section class="final-cta block">
         <div class="container">
-            <h2 class="text-center">Decida agora o que entra na tigela do seu cão</h2>
-            <p class="text-center text-narrow">Não deixe a indústria decidir pela você. Tome as rédeas da saúde do seu companheiro com conhecimento real, não com marketing.</p>
-            <div style="margin-top: var(--space-lg);">
-                <a href="#oferta" class="btn btn-large">Sim, quero fazer a escolha consciente</a>
+            <h2 class="text-center">A decisão que define os próximos anos</h2>
+            <p class="text-center text-narrow">Cada refeição é uma escolha. Cada escolha é um investimento no futuro do seu cão.</p>
+            <p class="text-center text-narrow">Não deixe que a indústria decida por você. Tome as rédeas com conhecimento, não com esperança.</p>
+            
+            <div class="cta-animation">
+                <a href="#oferta" class="btn btn-large">Transforme a nutrição do seu cão hoje <i class="fas fa-paw"></i></a>
             </div>
         </div>
     </section>
     
-    <!-- RODAPÉ -->
+    <!-- RODAPÉ PREMIUM -->
     <footer class="block">
         <div class="container">
-            <p>Este produto é de caráter informativo e educativo. Não substitui a orientação de um médico veterinário qualificado. Consulte sempre um profissional para questões específicas de saúde do seu animal.</p>
-            <p>© 2023 Vida de Cão - Todos os direitos reservados.</p>
+            <p>© 2023 Vida de Cão - Nutrição Canina Consciente. Todas as informações contidas neste material têm caráter meramente informativo e educativo. Não substituem a orientação de um médico veterinário qualificado. Consulte sempre um profissional para questões específicas de saúde do seu animal.</p>
+            
+            <div class="footer-links">
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Contato</a>
+                <a href="#">Suporte</a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Animação suave ao rolar
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animação de entrada dos elementos
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Aplicar animação aos elementos
+            const animatedElements = document.querySelectorAll('.false-security-grid, .truth-stats, .alf-story-content, .repositioning-grid, .manual-delivers ul, .audience .columns, .offer-content');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Efeito de digitação no hero
+            const heroTitle = document.querySelector('.hero h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            };
+            
+            // Iniciar efeito de digitação após 0.5s
+            setTimeout(typeWriter, 500);
+        });
+    </script>
 </body>
 </html>
