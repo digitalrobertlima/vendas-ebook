@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vida de Cão: O que você coloca na sua tigela?</title>
+    <title>VIDA DE CÃO | O que você coloca na sua tigela?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Reset e configurações gerais */
+        /* Reset radical */
         * {
             margin: 0;
             padding: 0;
@@ -16,47 +16,50 @@
         }
 
         :root {
-            --preto-profundo: #050505;
-            --preto-carvão: #0F0F0F;
+            --preto-absoluto: #000000;
+            --preto-profundo: #0B0B0B;
+            --preto-carvão: #141414;
             --preto-carvão-claro: #1A1A1A;
-            --branco-suave: #F0F0F0;
-            --branco-frio: #FAFAFA;
-            --cinza-claro: #AAAAAA;
-            --cinza-medio: #777777;
+            --branco-puro: #FFFFFF;
+            --branco-suave: #F2F2F2;
+            --cinza-claro: #B5B5B5;
+            --cinza-médio: #666666;
             --dourado-fosco: #C9A24D;
-            --dourado-claro: #E2C375;
-            --dourado-escuro: #A88434;
+            --dourado-claro: #D4B15F;
+            --dourado-escuro: #B08C36;
             --verde-saude: #3FA96B;
             --vermelho-alerta: #C94A4A;
+            
+            /* Novas variáveis para luxo */
+            --borda-fina: 0.5px solid rgba(201, 162, 77, 0.15);
+            --borda-media: 1px solid rgba(201, 162, 77, 0.3);
+            --borda-espessa: 2px solid rgba(201, 162, 77, 0.5);
+            
             --espacamento-xxl: 180px;
             --espacamento-xl: 140px;
             --espacamento-lg: 100px;
             --espacamento-md: 60px;
             --espacamento-sm: 30px;
-            --borda-fina: 0.5px solid rgba(201, 162, 77, 0.15);
-            --borda-media: 1px solid rgba(201, 162, 77, 0.25);
-            --transicao-lenta: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-            --transicao-media: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            --transicao-rapida: 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+            --espacamento-xs: 15px;
         }
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--branco-suave);
-            background-color: var(--preto-profundo);
+            background-color: var(--preto-absoluto);
             overflow-x: hidden;
             position: relative;
-            font-size: 16px;
-            letter-spacing: 0.02em;
+            letter-spacing: -0.01em;
         }
 
-        /* Textura de fundo premium */
+        /* Textura de grão premium */
         body::before {
             content: '';
             position: fixed;
@@ -64,83 +67,99 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(201, 162, 77, 0.02) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(63, 169, 107, 0.01) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(11, 11, 11, 0) 0%, transparent 100%);
-            z-index: -2;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            opacity: 0.4;
+            z-index: 9999;
             pointer-events: none;
+            mix-blend-mode: overlay;
         }
 
-        /* Grão sutil premium */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.02"/%3E%3C/svg%3E');
-            opacity: 0.12;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        /* Tipografia premium */
-        h1, h2, h3, h4, .font-serif {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            text-rendering: optimizeLegibility;
+        /* Tipografia editorial premium */
+        h1, h2, h3, h4, h5 {
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: clamp(4rem, 10vw, 9rem);
+            font-size: clamp(4.5rem, 12vw, 10rem);
             margin-bottom: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -0.03em;
+            line-height: 0.9;
         }
 
         h2 {
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             margin-bottom: 2rem;
         }
 
         h3 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1.5rem;
         }
 
         h4 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
             margin-bottom: 1rem;
         }
 
-        p {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-            color: var(--cinza-claro);
+        .headline-gigante {
+            font-size: clamp(5rem, 14vw, 12rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+        }
+
+        .titulo-editorial {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .texto-corpo {
+            font-size: 1.1rem;
             line-height: 1.9;
+            color: var(--cinza-claro);
+            font-weight: 300;
         }
 
-        .lead {
+        .texto-corpo-grande {
             font-size: 1.4rem;
-            line-height: 2;
-            color: var(--branco-frio);
+            line-height: 1.8;
+            color: var(--branco-suave);
+            font-weight: 300;
         }
 
-        .text-small {
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--cinza-medio);
+        .texto-fino {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--cinza-médio);
+            font-weight: 200;
         }
 
-        .text-micro {
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+        .destaque-dourado {
+            color: var(--dourado-fosco);
+            position: relative;
+        }
+
+        .destaque-dourado::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--dourado-fosco);
+            opacity: 0.5;
+        }
+
+        .destaque-verde {
+            color: var(--verde-saude);
+            font-weight: 600;
+        }
+
+        .destaque-vermelho {
+            color: var(--vermelho-alerta);
+            font-weight: 600;
         }
 
         /* Utilitários */
@@ -148,15 +167,15 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 var(--espacamento-sm);
         }
 
-        .container-narrow {
+        .container-estreito {
             max-width: 900px;
         }
 
-        .container-wide {
-            max-width: 1600px;
+        .container-muito-estreito {
+            max-width: 700px;
         }
 
         .section {
@@ -164,8 +183,27 @@
             position: relative;
         }
 
-        .section-tight {
-            padding: var(--espacamento-xl) 0;
+        .section-espaco-duplo {
+            padding: calc(var(--espacamento-xxl) * 1.5) 0;
+        }
+
+        .divisor {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(201, 162, 77, 0.1) 20%, 
+                rgba(201, 162, 77, 0.3) 50%, 
+                rgba(201, 162, 77, 0.1) 80%, 
+                transparent 100%);
+            margin: var(--espacamento-xl) auto;
+        }
+
+        .divisor-curto {
+            width: 120px;
+            height: 2px;
+            background-color: var(--dourado-fosco);
+            margin: var(--espacamento-lg) auto;
         }
 
         .text-center {
@@ -176,110 +214,23 @@
             text-align: right;
         }
 
-        .mb-xxl {
-            margin-bottom: var(--espacamento-xxl);
-        }
+        .mb-xl { margin-bottom: var(--espacamento-xl); }
+        .mb-lg { margin-bottom: var(--espacamento-lg); }
+        .mb-md { margin-bottom: var(--espacamento-md); }
+        .mb-sm { margin-bottom: var(--espacamento-sm); }
 
-        .mb-xl {
-            margin-bottom: var(--espacamento-xl);
-        }
-
-        .mb-lg {
-            margin-bottom: var(--espacamento-lg);
-        }
-
-        .mb-md {
-            margin-bottom: var(--espacamento-md);
-        }
-
-        .mb-sm {
-            margin-bottom: var(--espacamento-sm);
-        }
-
-        .pt-xxl {
-            padding-top: var(--espacamento-xxl);
-        }
-
-        .pb-xxl {
-            padding-bottom: var(--espacamento-xxl);
-        }
-
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, var(--dourado-fosco) 50%, transparent 100%);
-            margin: var(--espacamento-lg) 0;
-            opacity: 0.3;
-        }
-
-        .divider-vertical {
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(180deg, transparent 0%, var(--dourado-fosco) 50%, transparent 100%);
-            margin: 0 auto;
-            opacity: 0.3;
-        }
-
-        /* Destaques tipográficos */
-        .destaque-dourado {
-            color: var(--dourado-fosco);
-            position: relative;
-            display: inline-block;
-        }
-
-        .destaque-dourado::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background-color: var(--dourado-fosco);
-            opacity: 0.5;
-        }
-
-        .destaque-verde {
-            color: var(--verde-saude);
-            font-weight: 500;
-        }
-
-        .destaque-vermelho {
-            color: var(--vermelho-alerta);
-            font-weight: 500;
-        }
-
-        .underline-elegante {
-            text-decoration: none;
-            position: relative;
-            display: inline-block;
-        }
-
-        .underline-elegante::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, var(--dourado-fosco), transparent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform var(--transicao-media);
-        }
-
-        .underline-elegante:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .espaco-vertical {
+            height: var(--espacamento-xl);
         }
 
         /* Botões premium */
-        .btn {
+        .btn-editorial {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 22px 50px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            padding: 24px 60px;
+            font-size: 1rem;
+            font-weight: 600;
             letter-spacing: 0.15em;
             text-transform: uppercase;
             text-decoration: none;
@@ -287,986 +238,1043 @@
             background-color: transparent;
             color: var(--branco-suave);
             cursor: pointer;
-            transition: all var(--transicao-media);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
-        .btn::before {
+        .btn-editorial::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.05), transparent);
-            transition: left 1s cubic-bezier(0.19, 1, 0.22, 1);
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(201, 162, 77, 0.05), 
+                rgba(201, 162, 77, 0.1), 
+                rgba(201, 162, 77, 0.05), 
+                transparent);
+            transition: left 0.7s ease;
         }
 
-        .btn:hover {
-            box-shadow: 
-                0 0 40px rgba(201, 162, 77, 0.1),
-                inset 0 0 20px rgba(201, 162, 77, 0.05);
-            border-color: var(--dourado-claro);
-            color: var(--dourado-claro);
-            transform: translateY(-2px);
+        .btn-editorial:hover {
+            border-color: var(--dourado-fosco);
+            box-shadow: 0 0 30px rgba(201, 162, 77, 0.15);
         }
 
-        .btn:hover::before {
+        .btn-editorial:hover::before {
             left: 100%;
         }
 
-        .btn span {
+        .btn-editorial span {
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
-        /* Hero Section Ultra Premium */
-        .hero {
+        /* Header editorial */
+        .header-editorial {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 0;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: var(--borda-fina);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            color: var(--dourado-fosco);
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--dourado-fosco);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s ease;
+        }
+
+        .logo:hover::after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        .menu-editorial {
+            display: flex;
+            gap: 50px;
+        }
+
+        .menu-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cinza-claro);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--dourado-fosco);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-link:hover {
+            color: var(--branco-suave);
+        }
+
+        .menu-link:hover::after {
+            transform-origin: left;
+            transform: scaleX(1);
+        }
+
+        /* Hero Section - Editorial de Luxo */
+        .hero-editorial {
             min-height: 110vh;
             display: flex;
             align-items: center;
             position: relative;
-            padding: 100px 0;
+            padding-top: 120px;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .hero-fundo {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(201, 162, 77, 0.03) 0%, transparent 70%);
-            z-index: -1;
+            background: radial-gradient(ellipse at center, 
+                rgba(20, 20, 20, 0.3) 0%, 
+                rgba(0, 0, 0, 0.9) 70%);
+            z-index: -2;
         }
 
-        .hero-content {
+        .hero-conteudo {
+            max-width: 1300px;
+            margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        .hero-headline {
-            font-size: clamp(5rem, 12vw, 11rem);
-            font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .hero-headline::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            width: 150px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--dourado-fosco), transparent);
-        }
-
-        .hero-subtitle {
+        .hero-subtitulo {
             font-size: 1.8rem;
             color: var(--cinza-claro);
             margin-bottom: 4rem;
             max-width: 800px;
             font-weight: 300;
-            line-height: 1.6;
-        }
-
-        /* Número de seção elegante */
-        .section-number {
-            position: absolute;
-            top: 0;
-            right: 40px;
-            font-size: 14rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            color: rgba(201, 162, 77, 0.03);
-            line-height: 1;
-            pointer-events: none;
-            user-select: none;
-            z-index: -1;
-        }
-
-        /* Seção Manifesto Ultra Premium */
-        .manifesto-section {
+            letter-spacing: 0.02em;
             position: relative;
+            padding-left: 30px;
         }
 
-        .manifesto-block {
-            margin-bottom: var(--espacamento-xxl);
-            position: relative;
-            padding: 80px 0;
-        }
-
-        .manifesto-block::before {
+        .hero-subtitulo::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 100%;
-            border-top: var(--borda-fina);
-            border-bottom: var(--borda-fina);
-            pointer-events: none;
-        }
-
-        .manifesto-text {
-            font-size: clamp(3.5rem, 7vw, 6rem);
-            font-weight: 700;
-            line-height: 1.05;
-            letter-spacing: -0.02em;
-            color: var(--branco-frio);
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .manifesto-text::after {
-            content: '▪';
-            position: absolute;
-            bottom: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--dourado-fosco);
-            font-size: 2rem;
-            opacity: 0.5;
-        }
-
-        /* Seção Consciência Premium */
-        .consciencia-section {
-            position: relative;
-        }
-
-        .consciencia-content {
-            position: relative;
-            max-width: 700px;
-            margin-left: 10%;
-        }
-
-        /* Seção História Premium */
-        .historia-section {
-            background-color: rgba(15, 15, 15, 0.7);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .historia-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
+            top: 15px;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(201, 162, 77, 0.02) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .historia-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Seção Reposicionamento Premium */
-        .reposicionamento-section {
-            position: relative;
-        }
-
-        .reposicionamento-block {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .reposicionamento-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 162, 77, 0.02), transparent);
-            pointer-events: none;
-        }
-
-        .reposicionamento-text {
-            font-size: clamp(2.8rem, 5vw, 4.5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            color: var(--branco-frio);
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
-
-        /* Seção Imagens Premium */
-        .imagens-section {
-            position: relative;
-        }
-
-        .imagens-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: var(--espacamento-lg);
-        }
-
-        .imagem-item {
-            position: relative;
-            overflow: hidden;
-            height: 600px;
-            cursor: pointer;
-        }
-
-        .imagem-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(5, 5, 5, 0.9) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .imagem-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(120%) brightness(90%);
-            transition: all var(--transicao-lenta);
-        }
-
-        .imagem-item:hover img {
-            filter: grayscale(30%) contrast(110%) brightness(100%);
-            transform: scale(1.05);
-        }
-
-        .imagem-legenda {
-            position: absolute;
-            bottom: 30px;
-            left: 30px;
-            color: var(--dourado-fosco);
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            z-index: 2;
-            opacity: 0.8;
-            transition: opacity var(--transicao-media);
-        }
-
-        .imagem-item:hover .imagem-legenda {
-            opacity: 1;
-        }
-
-        /* Seção Manual Premium */
-        .manual-section {
-            position: relative;
-        }
-
-        .manual-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-        }
-
-        .manual-item {
-            position: relative;
-            padding: 40px;
-            border: var(--borda-fina);
-            transition: all var(--transicao-media);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .manual-item:hover {
-            border-color: var(--dourado-fosco);
-            background-color: rgba(201, 162, 77, 0.02);
-            transform: translateY(-10px);
-        }
-
-        .manual-numero {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--dourado-fosco);
-            opacity: 0.3;
-            margin-bottom: 20px;
-            line-height: 1;
-        }
-
-        .manual-item h4 {
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .manual-item h4::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
+            width: 15px;
             height: 1px;
             background-color: var(--dourado-fosco);
         }
 
-        /* Seção Para Quem Premium */
-        .para-quem-section {
-            position: relative;
-            background-color: rgba(10, 10, 10, 0.8);
+        /* Seção Manifesto - Impacto Máximo */
+        .manifesto-editorial {
+            padding: var(--espacamento-xxl) 0;
         }
 
-        .para-quem-grid {
+        .bloco-manifesto {
+            margin-bottom: var(--espacamento-xl);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bloco-manifesto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-top: var(--borda-espessa);
+            border-bottom: var(--borda-espessa);
+            transform: scaleX(0.9);
+            opacity: 0.2;
+        }
+
+        .texto-manifesto {
+            font-size: clamp(4rem, 9vw, 8rem);
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            color: var(--branco-puro);
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Seção Consciência - Layout Editorial */
+        .consciencia-editorial {
+            padding: var(--espacamento-xxl) 0;
+            background-color: var(--preto-profundo);
+        }
+
+        .coluna-estreita {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .paragrafo-editorial {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--branco-suave);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .paragrafo-editorial:first-of-type::first-letter {
+            font-size: 5rem;
+            font-weight: 800;
+            color: var(--dourado-fosco);
+            float: left;
+            line-height: 0.8;
+            margin-right: 15px;
+            margin-top: 10px;
+        }
+
+        /* Seção História - Estilo Documental */
+        .historia-documental {
+            padding: var(--espacamento-xxl) 0;
+            background-color: var(--preto-carvão);
+            position: relative;
+        }
+
+        .historia-documental::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 1px,
+                rgba(20, 20, 20, 0.1) 1px,
+                rgba(20, 20, 20, 0.1) 2px
+            );
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .texto-documental {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--cinza-claro);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Seção Reposicionamento - Tipografia Expressiva */
+        .reposicionamento-impactante {
+            padding: var(--espacamento-xxl) 0;
+        }
+
+        .bloco-reposicionamento {
+            margin-bottom: var(--espacamento-xl);
+            padding: 70px 0;
+        }
+
+        .texto-reposicionamento {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--branco-puro);
+            text-align: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .sublinhado-dourado {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sublinhado-dourado::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: var(--dourado-fosco);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Seção Imagens - Editorial de Luxo */
+        .galeria-editorial {
+            padding: var(--espacamento-xxl) 0;
+        }
+
+        .grid-imagens {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: var(--espacamento-lg);
+        }
+
+        .item-imagem {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .item-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(130%) brightness(0.8);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .item-imagem:hover img {
+            filter: grayscale(30%) contrast(120%) brightness(0.9);
+            transform: scale(1.05);
+        }
+
+        .legenda-imagem {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: var(--dourado-fosco);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        /* Seção Manual - Design de Conteúdo */
+        .manual-premium {
+            padding: var(--espacamento-xxl) 0;
+            background-color: var(--preto-profundo);
+        }
+
+        .lista-manual {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .item-manual {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: var(--borda-fina);
+            position: relative;
+        }
+
+        .item-manual:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .numero-manual {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            margin-right: 40px;
+            border: var(--borda-media);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-fosco);
+            font-size: 2rem;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .numero-manual::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(201, 162, 77, 0.2);
+            border-radius: 50%;
+        }
+
+        .conteudo-manual h4 {
+            color: var(--branco-puro);
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Seção Para Quem É / Não É - Layout Editorial */
+        .segmentacao-editorial {
+            padding: var(--espacamento-xxl) 0;
+        }
+
+        .grid-segmentacao {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
             position: relative;
         }
 
-        .para-quem-coluna {
-            padding: 60px;
-            position: relative;
-        }
-
-        .para-quem-coluna.eh {
-            border-right: var(--borda-fina);
-        }
-
-        .para-quem-coluna::before {
+        .grid-segmentacao::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
             height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(201, 162, 77, 0.01));
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity var(--transicao-media);
+            background: linear-gradient(to bottom, 
+                transparent, 
+                rgba(201, 162, 77, 0.3), 
+                transparent);
         }
 
-        .para-quem-coluna:hover::before {
-            opacity: 1;
-        }
-
-        .para-quem-coluna h3 {
+        .coluna-segmentacao h3 {
+            margin-bottom: 3rem;
             position: relative;
             padding-bottom: 20px;
-            margin-bottom: 40px;
         }
 
-        .para-quem-coluna h3::after {
+        .coluna-segmentacao h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
-            height: 2px;
+            width: 80px;
+            height: 3px;
         }
 
-        .para-quem-coluna.eh h3::after {
+        .coluna-eh h3::after {
             background-color: var(--verde-saude);
         }
 
-        .para-quem-coluna.nao-eh h3::after {
+        .coluna-nao-eh h3::after {
             background-color: var(--vermelho-alerta);
         }
 
-        .para-quem-lista {
+        .lista-segmentacao {
             list-style: none;
         }
 
-        .para-quem-lista li {
-            margin-bottom: 25px;
+        .lista-segmentacao li {
+            margin-bottom: 2rem;
             padding-left: 30px;
             position: relative;
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        .para-quem-lista li::before {
+        .lista-segmentacao li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 12px;
-            width: 10px;
-            height: 10px;
-            border: 1px solid;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: var(--borda-fina);
         }
 
-        .para-quem-coluna.eh .para-quem-lista li::before {
-            border-color: var(--verde-saude);
+        .coluna-eh .lista-segmentacao li::before {
+            background-color: rgba(63, 169, 107, 0.1);
         }
 
-        .para-quem-coluna.nao-eh .para-quem-lista li::before {
-            border-color: var(--vermelho-alerta);
+        .coluna-nao-eh .lista-segmentacao li::before {
+            background-color: rgba(201, 74, 74, 0.1);
         }
 
-        /* CTA Final Premium */
-        .cta-final {
-            position: relative;
+        /* CTA Final - Impacto Máximo */
+        .cta-impacto {
             padding: var(--espacamento-xxl) 0;
+            background-color: var(--preto-absoluto);
+            position: relative;
             overflow: hidden;
         }
 
-        .cta-final::before {
+        .cta-impacto::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(201, 162, 77, 0.05) 0%, transparent 70%);
+            background: radial-gradient(ellipse at center, 
+                rgba(201, 162, 77, 0.03) 0%, 
+                transparent 70%);
             pointer-events: none;
         }
 
-        .cta-content {
-            max-width: 800px;
+        .cta-conteudo {
+            max-width: 900px;
             margin: 0 auto;
+            text-align: center;
             position: relative;
             z-index: 2;
         }
 
-        .assinatura {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--dourado-fosco);
-            text-align: center;
-            margin-top: 60px;
-            font-style: italic;
-            letter-spacing: 0.05em;
+        .texto-cta {
+            font-size: 2rem;
+            line-height: 1.6;
+            color: var(--branco-suave);
+            margin-bottom: 4rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Rodapé Premium */
-        .footer {
+        /* Rodapé Editorial */
+        .footer-editorial {
             padding: 60px 0;
             border-top: var(--borda-fina);
-            position: relative;
         }
 
-        .footer-content {
+        .footer-conteudo {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
 
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
+        .assinatura {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
             color: var(--dourado-fosco);
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
         }
 
-        .footer-disclaimer {
-            font-size: 0.85rem;
-            color: var(--cinza-medio);
-            max-width: 600px;
+        .disclaimer {
+            font-size: 0.75rem;
+            color: var(--cinza-médio);
+            max-width: 500px;
             text-align: right;
-            line-height: 1.8;
+            font-weight: 200;
+            line-height: 1.6;
         }
 
-        /* Animações premium */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fade-in {
+        /* Animações Editoriais */
+        .aparece {
             opacity: 0;
-            animation: fadeInUp 1.2s var(--transicao-lenta) forwards;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.23, 1, 0.32, 1), 
+                        transform 1s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .fade-in-slow {
+        .aparece.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .aparece-lento {
             opacity: 0;
-            animation: fadeIn 2s var(--transicao-lenta) forwards;
+            transition: opacity 1.5s ease 0.3s;
         }
 
-        .delay-1 {
-            animation-delay: 0.2s;
+        .aparece-lento.visivel {
+            opacity: 1;
         }
 
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
-        }
-
-        .delay-4 {
-            animation-delay: 0.8s;
-        }
-
-        .delay-5 {
-            animation-delay: 1s;
-        }
-
-        /* Scroll indicator */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 100px;
-            background: linear-gradient(180deg, var(--dourado-fosco), transparent);
-            opacity: 0.5;
-            z-index: 10;
-        }
-
-        .scroll-indicator::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 30px;
-            background: var(--dourado-fosco);
-            animation: scrollIndicator 2s infinite ease-in-out;
-        }
-
-        @keyframes scrollIndicator {
-            0% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-50%) translateY(70px);
-                opacity: 0;
-            }
-        }
-
-        /* Responsividade premium */
+        /* Responsividade Premium */
         @media (max-width: 1200px) {
             :root {
                 --espacamento-xxl: 140px;
                 --espacamento-xl: 100px;
                 --espacamento-lg: 80px;
                 --espacamento-md: 50px;
-                --espacamento-sm: 25px;
             }
             
-            .imagens-grid {
+            .grid-imagens {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .manual-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .item-imagem {
+                height: 400px;
             }
         }
 
         @media (max-width: 992px) {
-            .container {
-                padding: 0 30px;
+            :root {
+                --espacamento-xxl: 120px;
+                --espacamento-xl: 80px;
+                --espacamento-lg: 60px;
+                --espacamento-md: 40px;
             }
             
-            .para-quem-grid {
+            h1 {
+                font-size: clamp(3.5rem, 10vw, 8rem);
+            }
+            
+            .headline-gigante {
+                font-size: clamp(4rem, 12vw, 10rem);
+            }
+            
+            .texto-manifesto {
+                font-size: clamp(3rem, 7vw, 6rem);
+            }
+            
+            .grid-segmentacao {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: var(--espacamento-xl);
             }
             
-            .para-quem-coluna.eh {
-                border-right: none;
-                border-bottom: var(--borda-fina);
-                padding-bottom: 60px;
+            .grid-segmentacao::before {
+                display: none;
             }
             
-            .section-number {
-                font-size: 10rem;
-                right: 30px;
+            .menu-editorial {
+                gap: 30px;
             }
         }
 
         @media (max-width: 768px) {
             :root {
                 --espacamento-xxl: 100px;
-                --espacamento-xl: 80px;
-                --espacamento-lg: 60px;
-                --espacamento-md: 40px;
-                --espacamento-sm: 20px;
+                --espacamento-xl: 70px;
+                --espacamento-lg: 50px;
+                --espacamento-md: 30px;
             }
             
-            h1 {
-                font-size: clamp(3rem, 8vw, 5rem);
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
             }
             
-            .hero-headline {
-                font-size: clamp(3.5rem, 9vw, 6rem);
+            .menu-editorial {
+                gap: 25px;
             }
             
-            .manifesto-text {
-                font-size: clamp(2.5rem, 5vw, 4rem);
-            }
-            
-            .reposicionamento-text {
-                font-size: clamp(2rem, 4vw, 3rem);
-            }
-            
-            .imagens-grid {
+            .grid-imagens {
                 grid-template-columns: 1fr;
             }
             
-            .imagem-item {
-                height: 500px;
+            .item-imagem {
+                height: 350px;
             }
             
-            .consciencia-content {
-                margin-left: 0;
+            .hero-subtitulo {
+                font-size: 1.4rem;
             }
             
-            .footer-content {
+            .item-manual {
+                flex-direction: column;
+            }
+            
+            .numero-manual {
+                margin-right: 0;
+                margin-bottom: 25px;
+            }
+            
+            .footer-conteudo {
                 flex-direction: column;
                 gap: 30px;
                 text-align: center;
             }
             
-            .footer-disclaimer {
+            .disclaimer {
                 text-align: center;
             }
         }
 
         @media (max-width: 576px) {
-            .container {
-                padding: 0 20px;
+            :root {
+                --espacamento-xxl: 80px;
+                --espacamento-xl: 60px;
+                --espacamento-lg: 40px;
+                --espacamento-md: 25px;
             }
             
-            .btn {
-                padding: 18px 30px;
-                font-size: 1rem;
+            h1 {
+                font-size: clamp(3rem, 9vw, 6rem);
             }
             
-            .manual-item {
-                padding: 30px;
+            .texto-manifesto {
+                font-size: clamp(2.5rem, 6vw, 4.5rem);
             }
             
-            .para-quem-coluna {
-                padding: 40px 20px;
+            .btn-editorial {
+                padding: 20px 40px;
+                font-size: 0.9rem;
             }
             
-            .section-number {
-                font-size: 8rem;
-                right: 20px;
+            .menu-editorial {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
             }
+            
+            .texto-reposicionamento {
+                font-size: clamp(2.5rem, 6vw, 4rem);
+            }
+        }
+
+        /* Detalhe de assinatura dourada */
+        .assinatura-dourada {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            border: var(--borda-fina);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dourado-fosco);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .assinatura-dourada:hover {
+            border-color: var(--dourado-claro);
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section Ultra Premium -->
-    <section class="hero section">
-        <div class="scroll-indicator"></div>
-        <div class="container container-narrow">
-            <div class="hero-content">
-                <div class="text-small fade-in">Manifesto editorial sobre nutrição canina consciente</div>
-                <h1 class="hero-headline fade-in delay-1">Alguns erros na alimentação do seu cachorro não causam problema hoje.</h1>
-                <p class="hero-subtitle fade-in delay-2">Eles se acumulam silenciosamente. Manifestam-se anos depois, quando já não há retorno.</p>
-                <a href="#cta-final" class="btn fade-in delay-3"><span>Quero tomar decisões melhores</span></a>
-            </div>
+    <!-- Assinatura Dourada Fixa -->
+    <a href="#cta-impacto" class="assinatura-dourada aparece-lento">Vida<br>de<br>Cão</a>
+
+    <!-- Header Editorial -->
+    <header class="header-editorial">
+        <div class="container header-container">
+            <a href="#" class="logo">VIDA DE CÃO</a>
+            <nav class="menu-editorial">
+                <a href="#manifesto" class="menu-link">Manifesto</a>
+                <a href="#consciencia" class="menu-link">Consciência</a>
+                <a href="#manual" class="menu-link">Manual</a>
+                <a href="#cta-impacto" class="menu-link">Decisão</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Editorial -->
+    <section class="hero-editorial section">
+        <div class="hero-fundo"></div>
+        <div class="container hero-conteudo">
+            <h1 class="headline-gigante aparece">
+                <span class="destaque-dourado">Alguns erros</span><br>
+                na alimentação<br>
+                do seu cachorro
+            </h1>
+            <div class="hero-subtitulo aparece">Eles se acumulam. Silenciosamente. Invisivelmente.</div>
+            <a href="#cta-impacto" class="btn-editorial aparece">
+                <span>Quero tomar decisões melhores</span>
+            </a>
         </div>
     </section>
 
-    <!-- Seção Manifesto Ultra Premium -->
-    <section class="manifesto-section section">
-        <div class="section-number">I</div>
-        <div class="container container-narrow">
-            <div class="manifesto-block">
-                <div class="manifesto-text fade-in">Consciência não é exagero.</div>
-            </div>
-            
-            <div class="manifesto-block">
-                <div class="manifesto-text fade-in delay-1">Excesso não faz barulho.</div>
-            </div>
-            
-            <div class="manifesto-block">
-                <div class="manifesto-text fade-in delay-2">Responsabilidade é silenciosa.</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Consciência Premium -->
-    <section class="consciencia-section section">
-        <div class="section-number">II</div>
+    <!-- Seção Manifesto -->
+    <section id="manifesto" class="manifesto-editorial section">
         <div class="container">
-            <div class="consciencia-content">
-                <div class="mb-xl fade-in">
-                    <h2 class="mb-md">O que você não vê</h2>
-                    <p class="lead">As consequências das escolhas alimentares para o seu cão são graduais. Invisíveis no dia a dia, manifestam-se anos depois, quando já não há retorno.</p>
+            <div class="bloco-manifesto aparece">
+                <div class="texto-manifesto">Consciência não é exagero.</div>
+            </div>
+            
+            <div class="bloco-manifesto aparece">
+                <div class="texto-manifesto">Excesso não faz barulho.</div>
+            </div>
+            
+            <div class="bloco-manifesto aparece">
+                <div class="texto-manifesto">Responsabilidade é silenciosa.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Consciência -->
+    <section id="consciencia" class="consciencia-editorial section">
+        <div class="container container-muito-estreito">
+            <div class="coluna-estreita">
+                <div class="divisor-curto"></div>
+                
+                <div class="paragrafo-editorial aparece">
+                    As consequências são graduais. Invisíveis no dia a dia, manifestam-se anos depois, quando já não há retorno. Não se trata de alarmismo. Trata-se de entender que cada refeição é um investimento na saúde, na vitalidade e nos anos de vida do seu cão.
                 </div>
                 
-                <div class="fade-in delay-1">
-                    <p class="lead">Não se trata de alarmismo. Trata-se de entender que cada refeição é um investimento na saúde, na vitalidade e nos anos de vida do seu cão.</p>
+                <div class="paragrafo-editorial aparece">
+                    A indústria alimentícia canina prioriza o prazo de validade, o custo de produção e a palatabilidade artificial. O resultado são ingredientes de baixa biodisponibilidade, <span class="destaque-vermelho">excesso</span> de carboidratos e aditivos questionáveis. Enquanto isso, problemas renais, hepáticos, alergias e obesidade canina crescem de forma silenciosa, normalizados como "doenças da idade".
                 </div>
                 
-                <div class="divider fade-in delay-2"></div>
+                <div class="divisor-curto"></div>
             </div>
         </div>
     </section>
 
-    <!-- Seção História Premium -->
-    <section class="historia-section section">
-        <div class="section-number">III</div>
-        <div class="container container-narrow">
-            <div class="historia-content">
-                <h2 class="mb-md fade-in">A História que não contam</h2>
-                <p class="lead mb-md fade-in delay-1">A alimentação canina foi sequestrada por uma indústria que prioriza o prazo de validade, o custo de produção e a palatabilidade artificial. O resultado são ingredientes de baixa biodisponibilidade, <span class="destaque-vermelho">excesso</span> de carboidratos e aditivos questionáveis.</p>
-                <p class="lead fade-in delay-2">Enquanto isso, problemas renais, hepáticos, alergias e obesidade canina crescem de forma silenciosa, normalizados como "doenças da idade".</p>
+    <!-- Seção História -->
+    <section class="historia-documental section">
+        <div class="container container-estreito">
+            <h2 class="titulo-editorial text-center mb-lg aparece">A História<br>que não contam</h2>
+            
+            <div class="texto-documental aparece">
+                A alimentação canina foi sequestrada por uma narrativa de conveniência. Embalagens coloridas, slogans emocionais e a promessa de nutrição completa mascaram uma realidade mais complexa. O que é vendido como "equilibrado" muitas vezes é apenas economicamente viável.
+            </div>
+            
+            <div class="texto-documental aparece">
+                Enquanto o mercado cresce, a saúde canina declina. Estatísticas mostram aumento constante de doenças crônicas em cães cada vez mais jovens. A conexão é direta, mas <span class="destaque-vermelho">invisível</span> aos olhos desatentos.
             </div>
         </div>
     </section>
 
-    <!-- Seção Reposicionamento Premium -->
-    <section class="reposicionamento-section section-tight">
-        <div class="section-number">IV</div>
-        <div class="container container-narrow">
-            <div class="reposicionamento-block">
-                <div class="reposicionamento-text fade-in">
-                    Isso não é <span class="underline-elegante">cozinhar</span> para cachorro.
+    <!-- Seção Reposicionamento -->
+    <section class="reposicionamento-impactante section">
+        <div class="container">
+            <div class="bloco-reposicionamento aparece">
+                <div class="texto-reposicionamento">
+                    Isso não é <span class="sublinhado-dourado">cozinhar</span> para cachorro.
                 </div>
             </div>
             
-            <div class="reposicionamento-block">
-                <div class="reposicionamento-text fade-in delay-1">
-                    É entender <span class="underline-elegante">nutrição</span>, proporção e necessidade.
+            <div class="bloco-reposicionamento aparece">
+                <div class="texto-reposicionamento">
+                    É entender <span class="sublinhado-dourado">nutrição</span>, proporção e necessidade.
                 </div>
             </div>
-            
-            <div class="divider-vertical fade-in delay-2"></div>
         </div>
     </section>
 
-    <!-- Seção Imagens Premium -->
-    <section class="imagens-section section">
-        <div class="section-number">V</div>
-        <div class="container container-wide">
-            <h2 class="text-center mb-lg fade-in">Visões do essencial</h2>
+    <!-- Seção Imagens -->
+    <section class="galeria-editorial section">
+        <div class="container">
+            <div class="espaco-vertical"></div>
             
-            <div class="imagens-grid">
-                <figure class="imagem-item fade-in">
+            <div class="grid-imagens">
+                <figure class="item-imagem aparece">
                     <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Cachorro em ambiente neutro, olhar sério">
-                    <figcaption class="imagem-legenda">Observação atenta</figcaption>
+                    <figcaption class="legenda-imagem">Observação Atenta</figcaption>
                 </figure>
                 
-                <figure class="imagem-item fade-in delay-1">
+                <figure class="item-imagem aparece">
                     <img src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Close em comida real e saudável para cães">
-                    <figcaption class="imagem-legenda">Ingredientes reais</figcaption>
+                    <figcaption class="legenda-imagem">Ingredientes Reais</figcaption>
                 </figure>
                 
-                <figure class="imagem-item fade-in delay-2">
+                <figure class="item-imagem aparece">
                     <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Mãos segurando tigela para cachorro">
-                    <figcaption class="imagem-legenda">A entrega cuidadosa</figcaption>
+                    <figcaption class="legenda-imagem">A Entrega Cuidadosa</figcaption>
                 </figure>
             </div>
             
-            <div class="divider fade-in delay-3"></div>
+            <div class="divisor"></div>
         </div>
     </section>
 
-    <!-- Seção Manual Premium -->
-    <section class="manual-section section">
-        <div class="section-number">VI</div>
-        <div class="container container-narrow">
-            <h2 class="text-center mb-lg fade-in">O que o manual entrega</h2>
+    <!-- Seção Manual -->
+    <section id="manual" class="manual-premium section">
+        <div class="container container-estreito">
+            <h2 class="titulo-editorial text-center mb-lg aparece">O que o manual<br>realmente entrega</h2>
             
-            <div class="manual-grid">
-                <div class="manual-item fade-in">
-                    <div class="manual-numero">01</div>
-                    <h4>Desmistificação dos ingredientes</h4>
-                    <p>Entenda o que realmente está na composição das rações premium e como interpretar rótulos sem cair em marketing enganoso. Saiba identificar os aditivos desnecessários e os ingredientes de verdadeiro valor nutricional.</p>
+            <div class="lista-manual">
+                <div class="item-manual aparece">
+                    <div class="numero-manual">01</div>
+                    <div class="conteudo-manual">
+                        <h4>Desmistificação dos ingredientes</h4>
+                        <p class="texto-corpo">Entenda o que realmente está na composição das rações premium e como interpretar rótulos sem cair em marketing enganoso. Aprenda a identificar os <span class="destaque-verde">ingredientes-chave</span> e os <span class="destaque-vermelho">aditivos dispensáveis</span>.</p>
+                    </div>
                 </div>
                 
-                <div class="manual-item fade-in delay-1">
-                    <div class="manual-numero">02</div>
-                    <h4>Proporções corretas por porte e idade</h4>
-                    <p>Nada de estimativas genéricas. Tabelas precisas baseadas em peso, nível de atividade e fase da vida do seu cão. Inclui cálculos específicos para raças grandes, médias e pequenas em diferentes fases da vida.</p>
+                <div class="item-manual aparece">
+                    <div class="numero-manual">02</div>
+                    <div class="conteudo-manual">
+                        <h4>Proporções corretas por porte e idade</h4>
+                        <p class="texto-corpo">Nada de estimativas genéricas. Tabelas precisas baseadas em peso, nível de atividade e fase da vida do seu cão. Inclui ajustes para condições especiais como recuperação pós-cirúrgica ou gestação.</p>
+                    </div>
                 </div>
                 
-                <div class="manual-item fade-in delay-2">
-                    <div class="manual-numero">03</div>
-                    <h4>Protocolo de transição alimentar</h4>
-                    <p>Como mudar a alimentação do seu cão sem causar estresse digestivo, independentemente da idade ou condição atual. Método passo a passo com acompanhamento de sinais de adaptação e ajustes necessários.</p>
+                <div class="item-manual aparece">
+                    <div class="numero-manual">03</div>
+                    <div class="conteudo-manual">
+                        <h4>Protocolo de transição alimentar</h4>
+                        <p class="texto-corpo">Como mudar a alimentação do seu cão sem causar estresse digestivo, independentemente da idade ou condição atual. Método passo a passo para uma transição <span class="destaque-verde">suave e eficaz</span>.</p>
+                    </div>
                 </div>
                 
-                <div class="manual-item fade-in delay-3">
-                    <div class="manual-numero">04</div>
-                    <h4>Sinais de alerta e ajustes necessários</h4>
-                    <p>Aprenda a identificar os sinais sutis de que a alimentação atual não está adequada e como ajustar de forma precisa. Inclui monitoramento de pelagem, energia, peso e saúde digestiva.</p>
+                <div class="item-manual aparece">
+                    <div class="numero-manual">04</div>
+                    <div class="conteudo-manual">
+                        <h4>Sinais de alerta e ajustes necessários</h4>
+                        <p class="texto-corpo">Aprenda a identificar os sinais sutis de que a alimentação atual não está adequada e como ajustar de forma precisa. Inclui monitoramento de peso, pelagem, energia e saúde digestiva.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Para Quem Premium -->
-    <section class="para-quem-section section">
-        <div class="section-number">VII</div>
-        <div class="container container-narrow">
-            <h2 class="text-center mb-lg fade-in">Para quem é este manual</h2>
+    <!-- Seção Para Quem É / Não É -->
+    <section class="segmentacao-editorial section">
+        <div class="container">
+            <h2 class="titulo-editorial text-center mb-lg aparece">Para quem é<br>este manual</h2>
             
-            <div class="para-quem-grid">
-                <div class="para-quem-coluna eh fade-in">
+            <div class="grid-segmentacao">
+                <div class="coluna-segmentacao coluna-eh aparece">
                     <h3>É para quem</h3>
-                    <ul class="para-quem-lista">
-                        <li>Reconhece que a alimentação é o pilar da saúde canina</li>
+                    <ul class="lista-segmentacao">
+                        <li>Reconhece que a alimentação é o pilar fundamental da saúde canina</li>
                         <li>Está disposto a investir tempo para entender, não apenas seguir receitas</li>
                         <li>Busca autonomia nas decisões sobre a saúde do seu cão</li>
-                        <li>Valora qualidade de vida acima de conveniência</li>
-                        <li>Compreende que mudanças significativas exigem consistência</li>
-                        <li>Está pronto para observar e ajustar conforme a resposta do animal</li>
+                        <li>Valora qualidade de vida acima de conveniência imediata</li>
+                        <li>Compreende que mudanças significativas exigem consistência e paciência</li>
                     </ul>
                 </div>
                 
-                <div class="para-quem-coluna nao-eh fade-in delay-1">
+                <div class="coluna-segmentacao coluna-nao-eh aparece">
                     <h3>Não é para quem</h3>
-                    <ul class="para-quem-lista">
-                        <li>Busca soluções rápidas e milagrosas</li>
+                    <ul class="lista-segmentacao">
+                        <li>Busca soluções rápidas, milagrosas e sem esforço</li>
                         <li>Prioriza apenas o custo na hora de alimentar seu cão</li>
                         <li>Espera uma lista genérica de "alimentos proibidos e permitidos"</li>
                         <li>Acredita que todas as raças e idades têm as mesmas necessidades</li>
                         <li>Não está disposto a observar e ajustar conforme a resposta do animal</li>
-                        <li>Prefere a comodidade do pré-fabricado à precisão do personalizado</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final Premium -->
-    <section id="cta-final" class="cta-final section">
-        <div class="container container-narrow">
-            <div class="cta-content">
-                <h2 class="text-center mb-md fade-in">O silêncio das escolhas certas</h2>
-                <p class="lead text-center mb-lg fade-in delay-1">A saúde do seu cão não anuncia sua chegada. Ela simplesmente está presente, dia após dia, ano após ano, na vitalidade discreta, na pelagem brilhante, no olhar atento.</p>
+    <!-- CTA Final -->
+    <section id="cta-impacto" class="cta-impacto section-espaco-duplo">
+        <div class="container">
+            <div class="cta-conteudo">
+                <h2 class="titulo-editorial mb-lg aparece">O silêncio<br>das escolhas certas</h2>
                 
-                <div class="text-center fade-in delay-2">
-                    <a href="#" class="btn"><span>Quero tomar decisões melhores</span></a>
-                </div>
+                <p class="texto-cta aparece">
+                    A saúde do seu cão não anuncia sua chegada. Ela simplesmente está presente, dia após dia, ano após ano. Silenciosa. Constante.
+                </p>
                 
-                <div class="assinatura fade-in delay-3">Vida de Cão</div>
+                <a href="#" class="btn-editorial aparece">
+                    <span>Quero tomar decisões melhores</span>
+                </a>
+                
+                <div class="espaco-vertical"></div>
+                
+                <p class="texto-fino aparece-lento">
+                    Manual "Vida de Cão: O que você coloca na sua tigela?"<br>
+                    Formato digital | 180 páginas | 37 ilustrações originais
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé Premium -->
-    <footer class="footer section-tight">
+    <!-- Rodapé Editorial -->
+    <footer class="footer-editorial">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">VIDA DE CÃO</div>
-                <div class="footer-disclaimer">Conteúdo educativo. Não substitui orientação veterinária. Todo animal é único e pode necessitar de acompanhamento profissional individualizado. Consulte sempre um veterinário de confiança para decisões sobre a saúde do seu cão.</div>
+            <div class="footer-conteudo">
+                <div class="assinatura">VIDA DE CÃO</div>
+                <div class="disclaimer">
+                    Conteúdo educativo desenvolvido por especialistas em nutrição canina. Não substitui orientação veterinária. Todo animal é único e pode necessitar de acompanhamento profissional individualizado. Consulte sempre um veterinário de sua confiança.
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Script para animações de entrada mais sofisticadas
+        // Sistema de animação editorial
         document.addEventListener('DOMContentLoaded', function() {
-            // Observador para elementos com animação
-            const observerOptions = {
+            const elementosAparecem = document.querySelectorAll('.aparece, .aparece-lento');
+            
+            const observadorAparece = new IntersectionObserver((entradas) => {
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        entrada.target.classList.add('visivel');
+                    }
+                });
+            }, {
                 threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationPlayState = 'running';
-                    }
-                });
-            }, observerOptions);
-            
-            // Observar todos os elementos com classe fade-in
-            document.querySelectorAll('.fade-in').forEach(el => {
-                el.style.animationPlayState = 'paused';
-                observer.observe(el);
+                rootMargin: '0px 0px -100px 0px'
             });
             
-            // Efeito parallax sutil para imagens
+            elementosAparecem.forEach(elemento => {
+                observadorAparece.observe(elemento);
+            });
+            
+            // Ativação sequencial para manifesto
+            const blocosManifesto = document.querySelectorAll('.bloco-manifesto');
+            blocosManifesto.forEach((bloco, indice) => {
+                bloco.style.transitionDelay = `${indice * 0.2}s`;
+            });
+            
+            // Ativação sequencial para itens do manual
+            const itensManual = document.querySelectorAll('.item-manual');
+            itensManual.forEach((item, indice) => {
+                item.style.transitionDelay = `${indice * 0.15}s`;
+            });
+            
+            // Header scroll effect
+            const header = document.querySelector('.header-editorial');
             window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.imagem-item img');
-                
-                parallaxElements.forEach(element => {
-                    const rate = element.getAttribute('data-rate') || 0.3;
-                    const offset = scrolled * rate;
-                    element.style.transform = `translateY(${offset}px) scale(1.05)`;
-                });
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+                    header.style.backdropFilter = 'blur(15px)';
+                } else {
+                    header.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
+                    header.style.backdropFilter = 'blur(10px)';
+                }
             });
             
-            // Efeito de digitação para o hero (opcional)
-            const heroSubtitle = document.querySelector('.hero-subtitle');
-            if (heroSubtitle) {
-                const text = heroSubtitle.textContent;
-                heroSubtitle.textContent = '';
-                
-                let i = 0;
-                const typeWriter = () => {
-                    if (i < text.length) {
-                        heroSubtitle.textContent += text.charAt(i);
-                        i++;
-                        setTimeout(typeWriter, 30);
-                    }
-                };
-                
-                // Iniciar após um pequeno delay
-                setTimeout(typeWriter, 1000);
-            }
-            
-            // Efeito de brilho sutil em elementos dourados
-            const douradoElements = document.querySelectorAll('.destaque-dourado, .btn');
-            douradoElements.forEach(el => {
-                el.addEventListener('mouseenter', function() {
-                    this.style.filter = 'brightness(1.2)';
-                });
-                
-                el.addEventListener('mouseleave', function() {
-                    this.style.filter = 'brightness(1)';
-                });
-            });
-            
-            // Navegação suave para âncoras
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
+            // Smooth scroll para links do menu
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
                     
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
+                    const alvoId = this.getAttribute('href');
+                    if (alvoId === '#') return;
                     
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
+                    const alvoElemento = document.querySelector(alvoId);
+                    if (alvoElemento) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 100,
+                            top: alvoElemento.offsetTop - 100,
                             behavior: 'smooth'
                         });
                     }
